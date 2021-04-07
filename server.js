@@ -12,6 +12,7 @@ const passportLocal = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 
 // Define middleware here
