@@ -15,7 +15,11 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-app.use(routes);
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/profile', require('./routes/api/project'));
+app.use('/api/posts', require('./routes/api/angel'));
+app.use('/api/posts', require('./routes/api/artist'));
 
 // Connect to the Mongo DB
 mongoose.connect(
