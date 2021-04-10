@@ -1,15 +1,48 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
+import Axios from 'axios'
 
 function App() {
-  const [registerUsername, setRegisterUsername] = useState("")
-  const [registeredPassword, setRegisteredPassword] = useState('');
+  const [registerUsername, setRegisterUsername] = useState('')
+  const [registeredPassword, setRegisterPassword] = useState('');
   const [loginUsername, setLoginUsername] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+  const [data, setData] = useState(null)
 
-  const register = () => {};
-  const login = () => {};
-  const getUser = () => {};
+  const register = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: registerUsername,
+        password: registeredPassword
+      },
+      withCredentials: true,
+      url: "http://localhost:4000/register"
+    }).then((res) => console.log(res));
+  };
+
+  const login = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: loginUsername,
+        password: loginPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:4000/login"
+    }).then((res) => console.log(res));
+  };
+
+  const getUser = () => {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:4000/user"
+    }).then((res) => {
+    setData(res.data);
+    console.log(res.data);
+  });
+}
 
   return (
     <div className="App">
@@ -30,10 +63,14 @@ function App() {
       <div>
         <h1>Get User</h1>
         <button onClick={getUser}>Submit</button>
+        {
+          data ? <h1>Welcome Back {data.username}</h1> : null
+        }
       </div>
 
     </div>
   );
+
 }
 
 export default App;
