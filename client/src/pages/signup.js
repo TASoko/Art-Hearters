@@ -1,11 +1,6 @@
 import React from "react";
 import "./signup.css";
-import YellowCircle from "../assets/yellow-circle.png";
-import RedCircle from "../assets/red-circle.png";
-import GreenSemiCircle from "../assets/green-semicircle.png";
-import BlueSemiCircle from "../assets/blue-semicircle.png";
-import PinkSemiCircle from "../assets/pink-semicircle.png";
-import GreenCircle from "../assets/green-circle.png";
+import Design from "../components/Design/desgin";
 
 function Signup() {
   return (
@@ -76,26 +71,7 @@ function Signup() {
           <span className="ml-2">Already have an account?</span>
         </a>
       </div>
-      <div className="design">
-        <div className="yellow-circle">
-          <img src={YellowCircle} alt="yellow circle" />
-        </div>
-        <div className="red-circle">
-          <img src={RedCircle} alt="red circle" />
-        </div>
-        <div className="green-semicircle">
-          <img src={GreenSemiCircle} alt="green semi-circle" />
-        </div>
-        <div className="green-circle">
-          <img src={GreenCircle} alt="green circle" />
-        </div>
-        <div className="pink-semicircle">
-          <img src={PinkSemiCircle} alt="pink semi-circle" />
-        </div>
-        <div className="blue-semicircle">
-          <img src={BlueSemiCircle} alt="blue semi-circle" />
-        </div>
-      </div>
+    <Design />
     </div>
   );
 }
