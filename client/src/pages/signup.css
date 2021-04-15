@@ -1,0 +1,13 @@
+body {
+    background: linear-gradient(90deg, #FFFFFF 60%, black 40%);
+}
+.entire {
+/* position: absolute; */
+margin-left: 200px;
+margin-top: 200px;
+width: 438px;
+height: 400px;
+left: 219px;
+top: 158px;
+}
+
