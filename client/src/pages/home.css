@@ -1,0 +1,17 @@
+body {
+    background: linear-gradient(90deg, #FFFFFF 60%, black 40%);
+}
+.Blub {
+    margin-top: 300px;
+    margin-left: 400px;
+}
+.explore {
+    background-color: #85C33D;
+}
+
+h1 {
+    font-size: 72pt;
+}
+h3 {
+      max-width: 700px;
+}
