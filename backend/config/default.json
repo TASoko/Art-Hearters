@@ -1,5 +1,0 @@
-{
-    "mongoURI" : "mongodb+srv://tsoko:helloworld@cluster0.ygack.mongodb.net/ArtDB?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken"
-      
-}
