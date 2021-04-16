@@ -13,8 +13,8 @@ app.get('/', (req, res) => res.send("API Running"));
 
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
-//app.use('/api/jobs', require('./routes/api/jobs'));
+app.use('/api/jobs', require('./routes/api/jobs'));
 app.use('/api/projects', require('./routes/api/projects'));
-// app.use('/api/event', require('./routes/api/event'));
+//  app.use('/api/events', require('./routes/api/events'));
 
 module.exports = app;
