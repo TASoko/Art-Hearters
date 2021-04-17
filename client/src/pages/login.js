@@ -18,8 +18,7 @@ function Login({ history }) {
 			if (!email || !password) {
 				return alert("Fill up the empty field!");
 			}
-
-			const res = await axios.post("/api/auth", { email, password });
+      			const res = await axios.post("/api/auth", { email, password });
 			if (res.data.status === "success") {
 				const { token } = res.data;
 
@@ -33,6 +32,7 @@ function Login({ history }) {
 			alert("Logging in wasn't successful, something went wrong!");
 		}
 	};
+
 	return (
 		<div className='flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10 entire'>
 			<div className='self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white'>
@@ -110,7 +110,7 @@ function Login({ history }) {
 			</div>
 			<div className='flex items-center justify-center mt-6'>
 				<a
-					href='#'
+					href='/signup'
 					target='_blank'
 					className='inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white'
 				>
