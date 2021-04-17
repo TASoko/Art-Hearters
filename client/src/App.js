@@ -5,6 +5,7 @@ import Signup from './pages/signup';
 import Home from './pages/home';
 import Explore from './pages/explore';
 import LoggedIn from './pages/loggedin';
+import Project from './pages/project';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
@@ -20,6 +21,7 @@ function App () {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/explore" component={Explore} />
           <Route exact path="/id" component={LoggedIn} />
+          <Route exact path="/project" component={Project} />
         </div>
       </Router>
     );
