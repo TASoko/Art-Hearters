@@ -27,7 +27,7 @@ function Login({ history }) {
         localStorage.setItem('token', token);
           
 				//B) Navigate to project page
-				history.push("/project");
+				history.push("/explore");
 			}
 		} catch (err) {
 			alert("Logging in wasn't successful, something went wrong!");

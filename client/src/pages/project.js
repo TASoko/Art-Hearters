@@ -9,7 +9,7 @@ function Project() {
 	React.useEffect(() => {
 		const token = localStorage.getItem("token");
 
-		//Get all the user Project
+		//Get all the user Projects
 
 		//  IIFE : Immediately Invoke Function Expression
 		(async () => {
