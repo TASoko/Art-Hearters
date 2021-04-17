@@ -29,9 +29,12 @@ function LoggedIn() {
         >
           Projects
         </button>
-    <div>
-        <img src={SavedTabs} alt="a screenshot of tabs where you could save events"/>
-    </div>
+        <div>
+          <img
+            src={SavedTabs}
+            alt="a screenshot of tabs where you could save events"
+          />
+        </div>
       </div>
       <div className="flex flex-wrap -m-4">
         <div className="lg:w-1/3 sm:w-1/2 p-4">
