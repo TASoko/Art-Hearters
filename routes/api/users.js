@@ -63,7 +63,7 @@ router.post(
 				{ expiresIn: "5 days" },
 				(err, token) => {
 					if (err) throw err;
-					res.json({ token });
+					res.status(200).json({ status: "success", token });
 				}
 			);
 		} catch (err) {

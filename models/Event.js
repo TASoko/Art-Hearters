@@ -21,7 +21,7 @@ const EventSchema = new mongoose.Schema({
  
       from: {
         type: Date,
-        required: true
+        // required: true
       },
       to: {
         type: Date
