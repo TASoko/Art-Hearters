@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar/navbar";
 
 function Explore () {
     return (
-      <div>
+      <div style={{backgroundColor:"white"}}>
         <Navbar />
         <h1>Welcome to Renaissance</h1>
         <div className="buttons">
