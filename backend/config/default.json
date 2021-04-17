@@ -1,5 +1,0 @@
-{
-    "mongoURI" : "mongodb+srv://vb:db123@cluster0.n5rrp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken"
-      
-}
