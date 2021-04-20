@@ -20,7 +20,9 @@ mongoose.connect(
   }
 );
 
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Start the server
 app.listen(PORT, () => console.log(`Server started at ${PORT}`))
