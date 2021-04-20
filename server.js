@@ -1,5 +1,5 @@
-const connectDB = require('./config/db');
-const app = require('./app');
+const connectDB = require('./backend/config/db');
+const app = require('./client/utils/app');
 const mongoose = require("mongoose");
 
 
