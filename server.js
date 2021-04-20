@@ -1,5 +1,5 @@
 // const connectDB = require('./backend/config/db');
-const app = require('./client/utils/app');
+const express = require('express');
 const mongoose = require("mongoose");
 
 
@@ -19,7 +19,7 @@ mongoose.connect(
   }
 );
 
-
+const app = express();
 
 // Start the server
 app.listen(PORT, () => console.log(`Server started at ${PORT}`))
