@@ -1,4 +1,4 @@
-const connectDB = require('./backend/config/db');
+// const connectDB = require('./backend/config/db');
 const app = require('./client/utils/app');
 const mongoose = require("mongoose");
 
