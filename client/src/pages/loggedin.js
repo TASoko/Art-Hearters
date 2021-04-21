@@ -3,18 +3,19 @@ import "./loggedin.css";
 import CreateNavbar from "../components/CreateNavbar";
 import SavedTabs from "../assets/saved-tabs.png";
 
-function LoggedIn() {
-  return (
-    <div style={{ backgroundColor: "white" }}>
-      <CreateNavbar />
-      <h1 style={{ fontSize: "60px" }}>Welcome Back</h1>
-      <div className="buttons">
-        <button
-          type="button"
-          className="jobs py-4 px-6  bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  "
-        >
-          Job Postings
-        </button>
+function LoggedIn({ history }) {
+	return (
+		<div style={{ backgroundColor: "white" }}>
+			<CreateNavbar />
+			<h1 style={{ fontSize: "60px" }}>Welcome to Back</h1>
+			<div className='buttons'>
+			<button
+					type='button'
+					onClick={() => history.push("jobs")}
+					className='projects py-4 px-6  bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  '
+				>
+					Projects
+				</button>
 
 				<button
 					type='button'
