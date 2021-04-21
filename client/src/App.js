@@ -8,10 +8,7 @@ import LoggedIn from './pages/loggedin';
 import Project from './pages/project';
 import Job from './pages/jobs';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Uploader from './components/Uploader'
-
-
-
+import Uploader from './components/Uploader/Uploader'
 
 function App () {
 

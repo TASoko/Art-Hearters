@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-const ReactS3 = require('react-s3');
-console.log(ReactS3);
+// const ReactS3 = require('react-s3');
+// console.log(ReactS3);
 require('dotenv').config(); // Loading dotenv to have access to env variables
 const config = {
   bucketName: process.env.BUCKET_NAME,
@@ -30,7 +30,7 @@ export default class Uploader extends Component {
       // this.setState({ file });
       console.log("got the image")
       console.log(formData.get("image"))
-      fetch("/routes/api/amazon-s3-routes/upload", {
+      fetch("/api/assets/upload", {
         method: "POST",
         body: formData
       })
