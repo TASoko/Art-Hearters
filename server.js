@@ -1,6 +1,7 @@
-const connectDB = require('./config/db');
-const app = require('./app');
+// const connectDB = require('./backend/config/db');
+const express = require('express');
 const mongoose = require("mongoose");
+const app = express();
 
 
 // connect to mongo db
@@ -19,7 +20,9 @@ mongoose.connect(
   }
 );
 
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Start the server
 app.listen(PORT, () => console.log(`Server started at ${PORT}`))
