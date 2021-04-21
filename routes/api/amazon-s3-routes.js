@@ -2,6 +2,8 @@ const AWS = require('aws-sdk');
 const fs = require('fs')
 const config = require("config");
 const express = require("express");
+const { validationResult } = require("express-validator");
+const auth = require("../../middleware/auth");
 const router = express.Router();
 
 console.log(process.env.AWS_ACCESS_KEY_ID);
@@ -14,7 +16,7 @@ var s3 = new AWS.S3({
 });
 
 
-app.post("/api/assets/upload", (req, res) => {
+router.post("/api/assets/upload", (req, res) => {
 
     console.log("UPLOADBODY", req.files)
 
@@ -36,8 +38,8 @@ app.post("/api/assets/upload", (req, res) => {
             }
             delete params.Body;
         }); 
-    })
-})
+    });
+});
 
 
 module.exports = router

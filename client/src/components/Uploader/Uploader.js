@@ -30,6 +30,7 @@ export default class Uploader extends Component {
       // this.setState({ file });
       console.log("got the image")
       console.log(formData.get("image"))
+      console.log('about to fetch...')
       fetch("/api/assets/upload", {
         method: "POST",
         body: formData
@@ -45,9 +46,7 @@ export default class Uploader extends Component {
           id='upload-image'
           type='file'
           accept='image/*'
-          // onChange={this.getImage}
         />
-        {/* <p>{this.state.message}</p> */}
         <form onSubmit={this.uploadFile}>
           <button onClick={this.getImage} id='file-upload-button'>Upload</button>
         </form>
