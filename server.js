@@ -1,32 +1,30 @@
 // const connectDB = require('./backend/config/db');
-const express = require('express');
+const express = require("express");
 const mongoose = require("mongoose");
-const app = express();
-
+const app = require("./app");
 
 // connect to mongo db
 // connectDB();
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/limitless-cliffs-88318",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }
+	process.env.MONGODB_URI || "mongodb://localhost/limitless-cliffs-88318",
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true,
+		useFindAndModify: false,
+	}
 );
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+	app.use(express.static("client/build"));
 }
 
 // Start the server
-app.listen(PORT, () => console.log(`Server started at ${PORT}`))
-
+app.listen(PORT, () => console.log(`Server started at ${PORT}`));
 
 // const express = require("express");
 
