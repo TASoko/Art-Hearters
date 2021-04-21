@@ -3,15 +3,15 @@ import axios from "axios";
 import "./project.css";
 import Navbar from "../components/Navbar/navbar";
 const token = localStorage.getItem("token");
-function Project() {
-	const [projects, setProjects] = React.useState([]);
+function Job() {
+	const [jobs, setJobs] = React.useState([]);
 	const [showForm, setShowForm] = React.useState(false);
-	const [isUpdateProject, setIsUpdateProject] = React.useState(false);
+	const [isUpdateJob, setIsUpdateJob] = React.useState(false);
 	const [state, setState] = React.useState({});
 
-	const getAllProjects = async () => {
+	const getAllJobs = async () => {
 		try {
-			const res = await axios.get("/api/projects");
+			const res = await axios.get("/api/jobs");
 			setProjects(res.data.data);
 		} catch (err) {
 			console.log(err);
@@ -19,28 +19,28 @@ function Project() {
 	};
 
 	React.useEffect(() => {
-		getAllProjects();
+		getAllJobs();
 	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const { projectName, location, description, to, from } = state;
+			const { jobName, team, location, Description, Position, to, from } = state;
 
 			// Validate the inputs
-			if (!projectName || !location || !description || !to || !from) {
+			if (!jobName || !location || !Description || !to || !from || !Position || !team) {
 				return alert("Fill up the empty field!");
 			}
 
-			const data = { ...state, project: projectName };
+			const data = { ...state, job: jobName };
 
 			// Remove the id
 			delete data._id;
 
-			const method = isUpdateProject ? "PATCH" : "POST";
-			const url = isUpdateProject
-				? `/api/projects/${state._id}`
-				: "/api/projects";
+			const method = isUpdateJob ? "PATCH" : "POST";
+			const url = isUpdateJob
+				? `/api/jobs/${state._id}`
+				: "/api/jobs";
 
 			const res = await axios({
 				method,
@@ -50,13 +50,13 @@ function Project() {
 			});
 
 			if (res.data.status === "success") {
-				setIsUpdateProject(false);
+				setIsUpdateJob(false);
 
 				// Reset the inputs
 				setState({});
 
 				// Get all projects
-				getAllProjects();
+				getAllJobs();
 
 				// Hide the form
 				setShowForm(false);
