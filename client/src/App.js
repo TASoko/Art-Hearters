@@ -8,6 +8,7 @@ import LoggedIn from './pages/loggedin';
 import Project from './pages/project';
 import Job from './pages/jobs';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Uploader from './components/Uploader'
 
 
 
@@ -24,6 +25,9 @@ function App () {
           <Route exact path="/loggedIn" component={LoggedIn} />
           <Route exact path="/project" component={Project} />
           <Route exact path="/jobs" component={Job} />
+        </div>
+        <div className="upload">
+          <Uploader />
         </div>
       </Router>
     );
