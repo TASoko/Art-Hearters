@@ -30,7 +30,7 @@ export default class Uploader extends Component {
       // this.setState({ file });
       console.log("got the image")
       console.log(formData.get("image"))
-      fetch("/api/assets/upload", {
+      fetch("/routes/api/amazon-s3-routes/upload", {
         method: "POST",
         body: formData
       })

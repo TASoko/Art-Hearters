@@ -1,7 +1,7 @@
 
 
 
-app.post("/api/assets/upload", (req, res) => {
+app.post("/routes/api/amazon-s3-routes/upload", (req, res) => {
 
     console.log("UPLOADBODY", req.files)
 
