@@ -25,14 +25,15 @@ function Job() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const { jobName, team, location, Description, Position, to, from } = state;
+			const {  team, location, description, position, to, from } = state;
 
 			// Validate the inputs
-			if (!jobName || !location || !Description || !to || !from || !Position || !team) {
+			
+			if ( !location || !description || !to || !from || !position || !team) {
 				return alert("Fill up the empty field!");
 			}
 
-			const data = { ...state, job: jobName };
+			const data = { ...state};
 
 			// Remove the id
 			delete data._id;
@@ -85,7 +86,7 @@ function Job() {
 	};
 
 	const handleJobUpdate = (job) => {
-		setState({ ...job, jobName: job.job });
+		setState({ ...job });
 		setIsUpdateJob(true);
 		setShowForm(true);
 	};
@@ -98,7 +99,6 @@ function Job() {
 		return jobs.length > 0 ? (
 			<table border>
 				<tr>
-					<th>Job</th>
 					<th>Description</th>
 					<th>Location</th>
 					<th>Team</th>
@@ -108,13 +108,13 @@ function Job() {
 					<th>Actions</th>
 				</tr>
 				{jobs.map((el) => {
-					const { _id, job, Position, team, location, Description, to, from } = el;
+					const { _id, position, team, location, description, to, from } = el;
 					return (
 						<tr key={_id}>
-							<td>{job}</td>
-							<td>{Description}</td>
+							
+							<td>{description}</td>
 							<td>{location}</td>
-							<td>{Position}</td>
+							<td>{position}</td>
 							<td>{team}</td>
 							<td>
 								{new Date(from).toLocaleString("en-us", {
@@ -162,22 +162,10 @@ function Job() {
 					<form action='#' autoComplete='off' onSubmit={handleSubmit}>
 						<div className='flex flex-col mb-2'>
 							<div className='flex relative '>
-								<input
-									type='text'
-									name='jobName'
-									value={state.jobName}
-									onChange={onInputChange}
-									className=' rounded-r-lg  appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
-									placeholder='Job Name'
-								/>
-							</div>
-						</div>
-						<div className='flex flex-col mb-2'>
-							<div className='flex relative '>
 								<textarea
 									type='text'
 									name='description'
-									value={state.Description}
+									value={state.description}
 									onChange={onInputChange}
 									className=' rounded-r-lg  appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
 									placeholder='Description'
@@ -200,8 +188,8 @@ function Job() {
 							<div className='flex relative '>
 								<input
 									type='text'
-									name='Position'
-									value={state.Position}
+									name='position'
+									value={state.position}
 									onChange={onInputChange}
 									class=' rounded-r-lg  appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
 									placeholder='Position'

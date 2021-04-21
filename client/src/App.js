@@ -5,8 +5,8 @@ import Signup from './pages/signup';
 import Home from './pages/home';
 import Explore from './pages/explore';
 import LoggedIn from './pages/loggedin';
-import Project from './pages/jobs';
-import Job from './pages/project';
+import Project from './pages/project';
+import Job from './pages/jobs';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
