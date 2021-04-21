@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { generateUploadURL } from '../../../backend/s3'
-// import { UploadURL } from '../../../backend/s3'
 
 
 const ReactS3 = require('react-s3');
 console.log(ReactS3);
 require('dotenv').config(); // Loading dotenv to have access to env variables
-// 6-minute upload to react video
 const config = {
   bucketName: process.env.BUCKET_NAME,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
