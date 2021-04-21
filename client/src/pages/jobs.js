@@ -12,7 +12,7 @@ function Job() {
 	const getAllJobs = async () => {
 		try {
 			const res = await axios.get("/api/jobs");
-			setProjects(res.data.data);
+			setJobs(res.data.data);
 		} catch (err) {
 			console.log(err);
 		}
@@ -62,31 +62,31 @@ function Job() {
 				setShowForm(false);
 			}
 		} catch (err) {
-			setIsUpdateProject(false);
+			setIsUpdateJob(false);
 			// Hide the form
 			setShowForm(false);
-			alert("something went wrong, while creating a new project!");
+			alert("something went wrong, while creating a new job!");
 		}
 	};
 
-	const handleProjectDelete = async (projectId) => {
+	const handleJobDelete = async (jobId) => {
 		try {
 			// eslint-disable-next-line no-restricted-globals
-			if (confirm("Are you sure you want to delete this project?")) {
-				await axios.delete(`/api/projects/${projectId}`, {
+			if (confirm("Are you sure you want to delete this job?")) {
+				await axios.delete(`/api/jobs/${jobId}`, {
 					headers: { "x-auth-token": token },
 				});
 				// Get all projects
-				getAllProjects();
+				getAllJobs();
 			}
 		} catch (error) {
-			alert("something went wrong, while deleteing a  project!");
+			alert("something went wrong, while deleteing a job!");
 		}
 	};
 
-	const handleProjectUpdate = (project) => {
-		setState({ ...project, projectName: project.project });
-		setIsUpdateProject(true);
+	const handleJobUpdate = (job) => {
+		setState({ ...job, jobName: job.job });
+		setIsUpdateJob(true);
 		setShowForm(true);
 	};
 
@@ -94,24 +94,28 @@ function Job() {
 		setState({ ...state, [e.target.name]: e.target.value });
 	};
 
-	const displayProjects = () => {
-		return projects.length > 0 ? (
+	const displayJobs = () => {
+		return jobs.length > 0 ? (
 			<table border>
 				<tr>
-					<th>Project</th>
+					<th>Job</th>
 					<th>Description</th>
 					<th>Location</th>
+					<th>Team</th>
+					<th>Position</th>
 					<th>From</th>
 					<th>To</th>
 					<th>Actions</th>
 				</tr>
-				{projects.map((el) => {
-					const { _id, project, location, description, to, from } = el;
+				{jobs.map((el) => {
+					const { _id, job, Position, team, location, Description, to, from } = el;
 					return (
 						<tr key={_id}>
-							<td>{project}</td>
-							<td>{description}</td>
+							<td>{job}</td>
+							<td>{Description}</td>
 							<td>{location}</td>
+							<td>{Position}</td>
+							<td>{team}</td>
 							<td>
 								{new Date(from).toLocaleString("en-us", {
 									month: "long",
@@ -128,13 +132,13 @@ function Job() {
 							</td>
 							<td>
 								<button
-									onClick={() => handleProjectUpdate(el)}
+									onClick={() => handleJobUpdate(el)}
 									className='py-2 px-4 m-2  bg-green-600 hover:bg-green-500 focus:ring-green-500 focus:ring-offset-green-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
 								>
 									Edit
 								</button>
 								<button
-									onClick={() => handleProjectDelete(_id)}
+									onClick={() => handleJobDelete(_id)}
 									className='py-2 px-4 m-2  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
 								>
 									Delete
@@ -145,14 +149,14 @@ function Job() {
 				})}
 			</table>
 		) : (
-			<h2>No projects available at the moment!</h2>
+			<h2>No Jobs available at the moment!</h2>
 		);
 	};
-	const displayProjectForm = () => {
+	const displayJobForm = () => {
 		return (
 			<div className='flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10'>
 				<div className='self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white'>
-					{isUpdateProject ? "Update" : "Create New"} Project
+					{isUpdateJob ? "Update" : "Create New"} Job
 				</div>
 				<div className='mt-8'>
 					<form action='#' autoComplete='off' onSubmit={handleSubmit}>
@@ -160,11 +164,11 @@ function Job() {
 							<div className='flex relative '>
 								<input
 									type='text'
-									name='projectName'
-									value={state.projectName}
+									name='jobName'
+									value={state.jobName}
 									onChange={onInputChange}
 									className=' rounded-r-lg  appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
-									placeholder='Project Name'
+									placeholder='Job Name'
 								/>
 							</div>
 						</div>
@@ -173,7 +177,7 @@ function Job() {
 								<textarea
 									type='text'
 									name='description'
-									value={state.description}
+									value={state.Description}
 									onChange={onInputChange}
 									className=' rounded-r-lg  appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
 									placeholder='Description'
@@ -192,6 +196,31 @@ function Job() {
 								/>
 							</div>
 						</div>
+						<div className='flex flex-col mb-2'>
+							<div className='flex relative '>
+								<input
+									type='text'
+									name='Position'
+									value={state.Position}
+									onChange={onInputChange}
+									class=' rounded-r-lg  appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+									placeholder='Position'
+								/>
+							</div>
+						</div>
+						<div className='flex flex-col mb-2'>
+							<div className='flex relative '>
+								<input
+									type='text'
+									name='team'
+									value={state.team}
+									onChange={onInputChange}
+									class=' rounded-r-lg  appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+									placeholder='Team'
+								/>
+							</div>
+						</div>
+
 						<div className='flex flex-col mb-2'>
 							<div className='flex relative '>
 								<input
@@ -221,7 +250,7 @@ function Job() {
 								type='submit'
 								className='py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
 							>
-								{isUpdateProject ? "Update" : "Submit"}
+								{isUpdateJob ? "Update" : "Submit"}
 							</button>
 						</div>
 					</form>
@@ -232,13 +261,13 @@ function Job() {
 	return (
 		<div>
 			{/* {<Navbar />} */}
-			{isUpdateProject ? (
+			{isUpdateJob ? (
 				<button
 					type='button'
 					className='login py-2 px-4 mb-10  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 '
 					onClick={() => {
 						setShowForm(false);
-						setIsUpdateProject(false);
+						setIsUpdateJob(false);
 						setState({})
 					}}
 				>
@@ -250,16 +279,16 @@ function Job() {
 					className='login py-2 px-4 mb-10  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 '
 					onClick={() => setShowForm(!showForm)}
 				>
-					Create New Project
+					Create New Job
 				</button>
 			)}
 
-			<h1>All Projects</h1>
+			<h1>AllJobs</h1>
 			<hr />
 
-			{showForm ? displayProjectForm() : displayProjects()}
+			{showForm ? displayJobForm() : displayJobs()}
 		</div>
 	);
 }
 
-export default Project;
+export default Job;
