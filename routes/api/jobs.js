@@ -128,14 +128,14 @@ router.get("/:id", auth, checkObjectId("id"), async (req, res) => {
 	}
 });
 
-// @route    DELETE api/projects/:id
-// @desc     Delete a projects
+// @route    DELETE api/jobs/:id
+// @desc     Delete a jobs
 // @access   Private
 router.delete("/:id", [auth, checkObjectId("id")], async (req, res) => {
 	try {
-		const job = await Job.findById(req.params.id);
+		const job = await Job.findByIdAndDelete(req.params.id);
 
-		if (!project) {
+		if (!job) {
 			return res
 				.status(404)
 				.json({ status: "error", message: "job not found" });
