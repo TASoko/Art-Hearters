@@ -16,7 +16,7 @@ var s3 = new AWS.S3({
 });
 
 
-router.post("/api/assets/upload", (req, res) => {
+router.put("/api/assets/upload", (req, res) => {
 
     console.log("UPLOADBODY", req.files)
 
