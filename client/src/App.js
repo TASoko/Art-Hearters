@@ -7,7 +7,7 @@ import Explore from './pages/explore';
 import LoggedIn from './pages/loggedin';
 import Project from './pages/project';
 import NewProject from "./pages/newproject";
-import Card from "./pages/card";
+import Card from "./components/Card/card";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
