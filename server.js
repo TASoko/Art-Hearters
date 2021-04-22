@@ -1,7 +1,7 @@
 // const connectDB = require('./backend/config/db');
 const express = require("express");
 const mongoose = require("mongoose");
-const app = require("./app");
+const app = express();
 
 // connect to mongo db
 // connectDB();
@@ -22,6 +22,19 @@ mongoose.connect(
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 }
+
+app.use(express.json());
+
+app.get('/', (req, res) => res.send("API Running"));
+
+
+// define routes
+
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/jobs', require('./routes/api/jobs'));
+app.use('/api/projects', require('./routes/api/projects'));
+ app.use('/api/events', require('./routes/api/events'));
 
 // Start the server
 app.listen(PORT, () => console.log(`Server started at ${PORT}`));
