@@ -2,6 +2,8 @@ import React from "react";
 import "./loggedin.css";
 import CreateNavbar from "../components/CreateNavbar";
 import SavedTabs from "../assets/saved-tabs.png";
+import Modal from "../components/Modal/modal";
+
 
 function LoggedIn({ history }) {
 	return (
