@@ -13,12 +13,12 @@ const JobSchema = new mongoose.Schema({
     type: String
   },
  
-  Description: {
+  description: {
     type: String,
     required: true
   },
 
-  Position: {
+  position: {
     type: String
   },
  
