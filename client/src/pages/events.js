@@ -3,33 +3,33 @@ import axios from "axios";
 import "./project.css";
 import Navbar from "../components/Navbar/navbar";
 const token = localStorage.getItem("token");
-function Job() {
-	const [jobs, setJobs] = React.useState([]);
+function EventSchema() {
+	const [events, setEvents] = React.useState([]);
 	const [showForm, setShowForm] = React.useState(false);
-	const [isUpdateJob, setIsUpdateJob] = React.useState(false);
+	const [isUpdateEvent, setIsUpdateEvent] = React.useState(false);
 	const [state, setState] = React.useState({});
 
-	const getAllJobs = async () => {
+	const getAllEvents = async () => {
 		try {
-			const res = await axios.get("/api/jobs");
-			setJobs(res.data.data);
+			const res = await axios.get("/api/events");
+			setEvents(res.data.data);
 		} catch (err) {
 			console.log(err);
 		}
 	};
 
 	React.useEffect(() => {
-		getAllJobs();
+		getAllEvents();
 	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const {  team, location, description, position, to, from } = state;
+			const {  title, location, description, to, from } = state;
 
 			// Validate the inputs
 			
-			if ( !location || !description || !to || !from || !position || !team) {
+			if ( !title||!location || !description || !to || !from ) {
 				return alert("Fill up the empty field!");
 			}
 
@@ -38,10 +38,10 @@ function Job() {
 			// Remove the id
 			delete data._id;
 
-			const method = isUpdateJob ? "PATCH" : "POST";
-			const url = isUpdateJob
-				? `/api/jobs/${state._id}`
-				: "/api/jobs";
+			const method = isUpdateEvent ? "PATCH" : "POST";
+			const url = isUpdateEvent
+				? `/api/events/${state._id}`
+				: "/api/events";
 
 			const res = await axios({
 				method,
@@ -51,43 +51,43 @@ function Job() {
 			});
 
 			if (res.data.status === "success") {
-				setIsUpdateJob(false);
+				setIsUpdateEvent(false);
 
 				// Reset the inputs
 				setState({});
 
 				// Get all projects
-				getAllJobs();
+				getAllEvents();
 
 				// Hide the form
 				setShowForm(false);
 			}
 		} catch (err) {
-			setIsUpdateJob(false);
+			setIsUpdateEvent(false);
 			// Hide the form
 			setShowForm(false);
-			alert("something went wrong, while creating a new job!");
+			alert("something went wrong, while creating a new event!");
 		}
 	};
 
-	const handleJobDelete = async (jobId) => {
+	const handleJobDelete = async (eventId) => {
 		try {
 			// eslint-disable-next-line no-restricted-globals
-			if (confirm("Are you sure you want to delete this job?")) {
-				await axios.delete(`/api/jobs/${jobId}`, {
+			if (confirm("Are you sure you want to delete this event?")) {
+				await axios.delete(`/api/events/${eventId}`, {
 					headers: { "x-auth-token": token },
 				});
 				// Get all projects
-				getAllJobs();
+				getAllEvents();
 			}
 		} catch (error) {
-			alert("something went wrong, while deleteing a job!");
+			alert("something went wrong, while deleteing an event!");
 		}
 	};
 
-	const handleJobUpdate = (job) => {
-		setState({ ...job });
-		setIsUpdateJob(true);
+	const handleEventUpdate = (event) => {
+		setState({ ...event });
+		setIsUpdateEvent(true);
 		setShowForm(true);
 	};
 
@@ -95,19 +95,19 @@ function Job() {
 		setState({ ...state, [e.target.name]: e.target.value });
 	};
 
-	const displayJobs = () => {
-		return jobs.length > 0 ? (
+	const displayEvents = () => {
+		return events.length > 0 ? (
 			<table border>
 				<tr>
 					{/* <th>Description</th> */}
+					<th>Title</th>
 					<th>Location</th>
-					<th>Team</th>
-					<th>Position</th>
+					<th>Description</th>
 					<th>From</th>
 					<th>To</th>
 					<th>Actions</th>
 				</tr>
-				{jobs.map((el) => {
+				{events.map((el) => {
 					const { _id, position, team, location, description, to, from } = el;
 					return (
 						<tr key={_id}>
