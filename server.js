@@ -1,12 +1,23 @@
 // const connectDB = require('./backend/config/db');
 const express = require("express");
 const mongoose = require("mongoose");
+// const app = require("./app");
+require('dotenv').config(); // Loading dotenv to have access to env variables for amazon s3 upload
+const fileUpload = require('express-fileupload') // getting express-fileupload for image upload
 const app = express();
 
 // connect to mongo db
 // connectDB();
 
 const PORT = process.env.PORT || 5000;
+
+
+// used for image upload to amazon s3
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp'
+}))
+
 
 // Connect to the Mongo DB
 mongoose.connect(
