@@ -14,7 +14,7 @@ function LoggedIn({ history }) {
 					onClick={() => history.push("jobs")}
 					className='jobs py-4 px-6  bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  '
 				>
-					Projects
+					Jobs
 				</button>
 
 				<button

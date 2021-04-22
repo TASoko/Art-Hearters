@@ -99,7 +99,7 @@ function Job() {
 		return jobs.length > 0 ? (
 			<table border>
 				<tr>
-					<th>Description</th>
+					{/* <th>Description</th> */}
 					<th>Location</th>
 					<th>Team</th>
 					<th>Position</th>
