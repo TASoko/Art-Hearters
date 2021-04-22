@@ -7,6 +7,7 @@ import Explore from './pages/explore';
 import LoggedIn from './pages/loggedin';
 import Project from './pages/project';
 import NewProject from "./pages/newproject";
+import Card from "./pages/card";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
@@ -24,6 +25,7 @@ function App () {
           <Route exact path="/id" component={LoggedIn} />
           <Route exact path="/project" component={Project} />
           <Route exact path="/newproject" component={NewProject} />
+          <Route exact path="/card" component={Card} />
         </div>
       </Router>
     );

@@ -2,11 +2,13 @@ import React from "react";
 import "./loggedin.css";
 import CreateNavbar from "../components/CreateNavbar";
 import SavedTabs from "../assets/saved-tabs.png";
+import Modal from "../components/Modal/modal";
 
 function LoggedIn() {
   return (
     <div style={{ backgroundColor: "white" }}>
       <CreateNavbar />
+      <Modal />
       <h1 style={{ fontSize: "60px" }}>Welcome Back</h1>
       <div className="buttons">
         <button
