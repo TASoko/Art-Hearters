@@ -27,9 +27,9 @@ function App () {
           <Route exact path="/card" component={Card} />
           <Route exact path="/jobs" component={Job} />
         </div>
-        <div className="uploader">
+        {/* <div className="uploader">
           <Uploader />
-        </div>
+        </div> */}
       </Router>
     );
 
