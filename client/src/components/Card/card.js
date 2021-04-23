@@ -2,6 +2,11 @@ import React from "react";
 
 function Card (){
       const [showModal, setShowModal] = React.useState(false);
+      // const [cardTitle, setCardTitle] = React.useState(false);
+
+
+
+
     return (
       <div>
         <div>
