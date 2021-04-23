@@ -13,7 +13,7 @@ const EventSchema = new mongoose.Schema({
     type: String
   },
  
-  Description: {
+  description: {
     type: [String],
     required: true
   },
@@ -33,4 +33,4 @@ const EventSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Event', JobSchema);
+module.exports = mongoose.model('Event', EventSchema);
