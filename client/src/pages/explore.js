@@ -1,11 +1,11 @@
 import React from "react";
 import "./explore.css";
 import Navbar from "../components/Navbar/navbar";
-import Card from "../components/Card/card";
+import ExploreCard from "../components/Card/explorecard";
+
 
 
 function Explore () {
-    const [showModal, setShowModal] = React.useState(false);
   
     return (
       <div style={{backgroundColor:"white"}}>
@@ -60,23 +60,23 @@ function Explore () {
         <div className="flex flex-wrap -m-4">
 
           <div className="lg:w-1/3 sm:w-1/2 p-4">
-            <Card />
+            <ExploreCard />
           </div>
 
           <div className="lg:w-1/3 sm:w-1/2 p-4">
-            <Card />
+            <ExploreCard />
           </div>
           <div className="lg:w-1/3 sm:w-1/2 p-4">
-            <Card />
+            <ExploreCard />
           </div>
           <div className="lg:w-1/3 sm:w-1/2 p-4">
-           <Card />
+           <ExploreCard />
           </div>
           <div className="lg:w-1/3 sm:w-1/2 p-4">
-            <Card />
+            <ExploreCard />
           </div>
           <div className="lg:w-1/3 sm:w-1/2 p-4">
-            <Card />
+            <ExploreCard />
           </div>
         </div>
       </div>
