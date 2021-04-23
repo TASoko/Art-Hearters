@@ -139,10 +139,33 @@ const projectSeed = [
     }
   ];
 
-db.mongoose.model('Event', EventSchema).remove({})
-db.mongoose.model('Project', ProjectSchema).remove({})
-db.mongoose.model('Job', JobSchema).remove({})
-  .then(() => db.Post.collection.insertMany(bookSeed))
+// empty the projects schema then add the seeds
+db.Project.remove({})
+    .then(() => db.Project.collection.insertMany(projectSeed))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+// empty the jobs schema then add the seeds
+db.Job.remove({})
+    .then(() => db.Job.collection.insertMany(jobSeed))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+// empty the events schema then add the seeds
+db.Event.remove({})
+  .then(() => db.Event.collection.insertMany(eventSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
