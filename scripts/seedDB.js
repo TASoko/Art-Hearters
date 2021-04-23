@@ -139,13 +139,15 @@ const projectSeed = [
     }
   ];
 
-// db.Post.remove({})
-//   .then(() => db.Post.collection.insertMany(bookSeed))
-//   .then(data => {
-//     console.log(data.result.n + " records inserted!");
-//     process.exit(0);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     process.exit(1);
-//   });
+db.mongoose.model('Event', EventSchema).remove({})
+db.mongoose.model('Project', ProjectSchema).remove({})
+db.mongoose.model('Job', JobSchema).remove({})
+  .then(() => db.Post.collection.insertMany(bookSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });

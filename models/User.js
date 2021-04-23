@@ -43,4 +43,8 @@ UserSchema.virtual("events", {
 	localField: "_id",
 });
 
-module.exports = User = mongoose.model("user", UserSchema);
+const User = mongoose.model("User", UserSchema)
+
+module.exports = User;
+
+// module.exports = User = mongoose.model("User", UserSchema);
