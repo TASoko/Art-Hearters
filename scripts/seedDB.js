@@ -53,6 +53,50 @@ const jobSeed = [
   }
 ];
 
+const projectSeed = [
+    {
+      user: "USER",
+      project: "Chalk Rocks",
+      location: "Central Park, South Side",
+      description: "The Union of Concerned Sidewalk Artists needs your help. The rocks in our city’s core are too bare to bear! Spring and summer are on their way and it’s time for a makeover. Bring friends and family for an afternoon of chalk art that celebrates our city’s magnificent geology.",
+      from: "FROM",
+      to: "TO",
+      date: new Date(Date.now()),
+      aws_image_url: "https://wjr-bucket-1.s3.us-east-2.amazonaws.com/chalk-rocks.jpeg"
+    },
+    {
+      user: "USER",
+      project: "Take Back the Night",
+      location: "The High Line",
+      description: "Columbia University’s undergraduate club Women in Computer Science will be hosting a candlelit ceremony on the High Line in recognition of sexual assault victims on college campuses. Students and friends of the University are invited to attend and to give their support respectfully.",
+      from: "FROM",
+      to: "TO",
+      date: new Date(Date.now()),
+      aws_image_url: "https://wjr-bucket-1.s3.us-east-2.amazonaws.com/take-back-the-night.jpeg"
+    },
+    {
+     user: "USER",
+      project: "Flash Mob! Go Nuts! World Record Attempt!",
+      location: "The 2",
+      description: "Do you like to go nuts? The Squirrel Group is attempting to set a world record for Most Walnuts Crushed by Subway Railcar. Participants will be asked for walnut donations in exchange for free stickers and wristbands. Toasted or raw--any walnut will do!",
+      from: "FROM",
+      to: "TO",
+      date: new Date(Date.now()),
+      aws_image_url: "https://wjr-bucket-1.s3.us-east-2.amazonaws.com/flash-mob-go-nuts-world-record-attempt.jpeg"
+    },
+    {
+      user: "USER",
+      project: "Performance Artist Needs Volunteers",
+      location: "86th and Broadway",
+      description: "Renowned painter and performance artist VERONIKA is looking for the bold and fearless. More details disclosed upon further inquiry. NOTE: applicants must be unafraid of heights, sewers.",
+      from: "FROM",
+      to: "TO",
+      date: new Date(Date.now()),
+      aws_image_url: "https://wjr-bucket-1.s3.us-east-2.amazonaws.com/performance-artist-needs-volunteers.jpeg"
+    }
+  ];
+
+
 db.Post.remove({})
   .then(() => db.Post.collection.insertMany(bookSeed))
   .then(data => {
