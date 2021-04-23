@@ -5,19 +5,26 @@ const db = require("../models");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactcms");
 
-const bookSeed = [
+const jobSeed = [
   {
-    title: "Hello World",
-    author: "admin",
-    body:
-      "Welcome to your first post! To create posts create a title and body. Don't forget to include your screen name!",
+    user: "USER",
+    team: "Thoko's Brewhouse",
+    location:
+      "Midtown",
+    position: "Team Manager",
+    description: "In search of a competent team manager who can handle a rush. Looking for a dedicated go-getter who is punctual and detail-oriented. 3+ years in restaurant management preferred.",
+    from: "FROM",
+    to: "TO",
     date: new Date(Date.now())
   },
   {
-    title: "The Second Post",
-    author: "admin",
-    body:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    user: "USER",
+    team: "Vincent's",
+    location: "Downtown",
+    position: "Bartender",
+    description: "In need of an experienced bartender with a creative approach to the job. Come ready to experiment with cocktail recipes. Must perform under pressure and scrutiny from our long-time returning clients. Vincent’s is dedicated to providing exceptional service and we expect the highest degree of dedication from our bartenders. ",
+    from: "FROM",
+    to: "TO",
     date: new Date(Date.now())
   },
   {
