@@ -96,6 +96,48 @@ const projectSeed = [
     }
   ];
 
+  const eventSeed = [
+    {
+      user: "USER",
+      title: "miniature pumpkin bocce tourney",
+      location: "riverside park",
+      description: "so basically me and my friends are absolute BOCCE FIENDS. every tuesday night we get together after work and throw and drink beer. we’ve been doing this for about four years now so--just gonna be straight up about this--we’re like rly good. so good in fact that we’ve recently switched to throwing those sturdy little mini pumpkins just to shake things up a bit. THIS SATURDAY at 2PM we’re hosting our first annual MINI-PUMP BOCCE BARTY in RIVERSIDE BARK. come one, come all. $5 entry and BYOB. all proceeds go toward helping Ricky buy a new stove (shitty landlord).",
+      from: "FROM",
+      to: "TO",
+      date: new Date(Date.now()),
+      aws_image_url: "https://wjr-bucket-1.s3.us-east-2.amazonaws.com/miniature-pumpkin-bocce-tourney.jpeg"
+    },
+    {
+      user: "USER",
+      title: "Super Sidewalk Sale",
+      location: "W147th and Covenant",
+      description: "Selling nearly all of my possessions for reasonable prices. Setting up on the sidewalk at the corner at 10am on Saturday and will be there until dark. I’m fleeing the country...everything must go!",
+      from: "FROM",
+      to: "TO",
+      date: new Date(Date.now()),
+      aws_image_url: "https://wjr-bucket-1.s3.us-east-2.amazonaws.com/super-sidewalk-sale.jpeg"
+    },
+    {
+    user: "USER",
+      title: "Ratatouille Outside",
+      location: "East Meadow, Central Park",
+      description: "Les Mécènes de l'Art du Rat will be holding a public screening of Disney’s Ratatouille at 5pm on Sunday. Space reserved for the first in attendance and restricted to the East Meadow. Popsicle and ice cream vendors will be in position nearby.",
+      from: "FROM",
+      to: "TO",
+      date: new Date(Date.now()),
+      aws_image_url: "https://wjr-bucket-1.s3.us-east-2.amazonaws.com/ratatouille-outside.jpeg"
+    },
+    {
+      user: "USER",
+      title: "Tomato Art Fest",
+      location: "East Nashville",
+      description: "Tomato Art Fest has been uniting fruits and vegetables since 2004. The annual festival attracts people from all over with fun themed art, local music, delicious food, costumes, wacky contests, shopping, kids activities, & more. The 2021 Tomato Art Fest will take place on Friday, August 13 and Saturday, August 14 in Historic East Nashville’s Five Points.  The 2-day festival and concert are free to attend, welcoming to all, and costumes are encouraged. Additionally, there are a few official ticketed festival events that are optional.",
+      from: "FROM",
+      to: "TO",
+      date: new Date(Date.now()),
+      aws_image_url: "https://wjr-bucket-1.s3.us-east-2.amazonaws.com/tomato-art-fest.jpeg"
+    }
+  ];
 
 db.Post.remove({})
   .then(() => db.Post.collection.insertMany(bookSeed))
