@@ -28,7 +28,7 @@ mongoose.connect(
 		useCreateIndex: true,
 		useFindAndModify: false,
 	}
-);
+).then(console.log("connected to the db!"));
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
