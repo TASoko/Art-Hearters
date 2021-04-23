@@ -29,9 +29,9 @@ function App () {
           <Route exact path="/jobs" component={Job} />
           <Route exact path="/events" component={Event} />
         </div>
-        {/* <div className="uploader">
+        <div className="uploader">
           <Uploader />
-        </div> */}
+        </div>
       </Router>
     );
 
