@@ -3,7 +3,7 @@ import axios from "axios";
 import "./project.css";
 import Navbar from "../components/Navbar/navbar";
 const token = localStorage.getItem("token");
-function EventSchema() {
+function Event() {
 	const [events, setEvents] = React.useState([]);
 	const [showForm, setShowForm] = React.useState(false);
 	const [isUpdateEvent, setIsUpdateEvent] = React.useState(false);
@@ -70,7 +70,7 @@ function EventSchema() {
 		}
 	};
 
-	const handleJobDelete = async (eventId) => {
+	const handleEventDelete = async (eventId) => {
 		try {
 			// eslint-disable-next-line no-restricted-globals
 			if (confirm("Are you sure you want to delete this event?")) {
@@ -108,15 +108,14 @@ function EventSchema() {
 					<th>Actions</th>
 				</tr>
 				{events.map((el) => {
-					const { _id, position, team, location, description, to, from } = el;
+					const { _id, title, location, description, to, from } = el;
 					return (
 						<tr key={_id}>
 							
 							<td>{description}</td>
 							<td>{location}</td>
-							<td>{position}</td>
-							<td>{team}</td>
-							<td>
+							<td>{title}</td>
+								<td>
 								{new Date(from).toLocaleString("en-us", {
 									month: "long",
 									year: "numeric",
@@ -132,13 +131,13 @@ function EventSchema() {
 							</td>
 							<td>
 								<button
-									onClick={() => handleJobUpdate(el)}
+									onClick={() => handleEventUpdate(el)}
 									className='py-2 px-4 m-2  bg-green-600 hover:bg-green-500 focus:ring-green-500 focus:ring-offset-green-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
 								>
 									Edit
 								</button>
 								<button
-									onClick={() => handleJobDelete(_id)}
+									onClick={() => handleEventDelete(_id)}
 									className='py-2 px-4 m-2  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
 								>
 									Delete
@@ -149,14 +148,14 @@ function EventSchema() {
 				})}
 			</table>
 		) : (
-			<h2>No Jobs available at the moment!</h2>
+			<h2>No Events at the moment!</h2>
 		);
 	};
-	const displayJobForm = () => {
+	const displayEventForm = () => {
 		return (
 			<div className='flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10'>
 				<div className='self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white'>
-					{isUpdateJob ? "Update" : "Create New"} Job
+					{isUpdateEvent ? "Update" : "Create New"} Event
 				</div>
 				<div className='mt-8'>
 					<form action='#' autoComplete='off' onSubmit={handleSubmit}>
@@ -188,26 +187,15 @@ function EventSchema() {
 							<div className='flex relative '>
 								<input
 									type='text'
-									name='position'
-									value={state.position}
+									name='title'
+									value={state.title}
 									onChange={onInputChange}
 									class=' rounded-r-lg  appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
 									placeholder='Position'
 								/>
 							</div>
 						</div>
-						<div className='flex flex-col mb-2'>
-							<div className='flex relative '>
-								<input
-									type='text'
-									name='team'
-									value={state.team}
-									onChange={onInputChange}
-									class=' rounded-r-lg  appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
-									placeholder='Team'
-								/>
-							</div>
-						</div>
+						
 
 						<div className='flex flex-col mb-2'>
 							<div className='flex relative '>
@@ -238,7 +226,7 @@ function EventSchema() {
 								type='submit'
 								className='py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
 							>
-								{isUpdateJob ? "Update" : "Submit"}
+								{isUpdateEvent ? "Update" : "Submit"}
 							</button>
 						</div>
 					</form>
@@ -249,13 +237,13 @@ function EventSchema() {
 	return (
 		<div>
 			{/* {<Navbar />} */}
-			{isUpdateJob ? (
+			{isUpdateEvent ? (
 				<button
 					type='button'
 					className='login py-2 px-4 mb-10  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 '
 					onClick={() => {
 						setShowForm(false);
-						setIsUpdateJob(false);
+						setIsUpdateEvent(false);
 						setState({})
 					}}
 				>
@@ -267,16 +255,16 @@ function EventSchema() {
 					className='login py-2 px-4 mb-10  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 '
 					onClick={() => setShowForm(!showForm)}
 				>
-					Create New Job
+					Create New Event
 				</button>
 			)}
 
-			<h1>AllJobs</h1>
+			<h1>AllEvents</h1>
 			<hr />
 
-			{showForm ? displayJobForm() : displayJobs()}
+			{showForm ? displayEventForm() : displayEvents()}
 		</div>
 	);
 }
 
-export default Job;
+export default Event;
