@@ -13,12 +13,12 @@ const JobSchema = new mongoose.Schema({
     type: String
   },
  
-  description: {
+  position: {
     type: String,
     required: true
   },
 
-  position: {
+  description: {
     type: String
   },
  
@@ -33,6 +33,9 @@ const JobSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  aws_image_url: {
+    type: String
   }
 });
 
