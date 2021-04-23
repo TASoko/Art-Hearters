@@ -30,6 +30,9 @@ const EventSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  aws_image_url: {
+    type: String
   }
 });
 
