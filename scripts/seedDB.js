@@ -154,7 +154,7 @@ const projectSeed = [
 db.Project.remove({})
     .then(() => db.Project.collection.insertMany(projectSeed))
     .then(data => {
-        console.log(data.result.n + " records inserted!");
+        console.log(data.result.n + " records inserted into the Project Schema!");
         // process.exit(0);
     })
     .catch(err => {
@@ -166,7 +166,7 @@ db.Project.remove({})
 db.Job.remove({})
     .then(() => db.Job.collection.insertMany(jobSeed))
     .then(data => {
-        console.log(data.result.n + " records inserted!");
+        console.log(data.result.n + " records inserted into the Job Schema!");
         // process.exit(0);
     })
     .catch(err => {
@@ -178,8 +178,8 @@ db.Job.remove({})
 db.Event.remove({})
   .then(() => db.Event.collection.insertMany(eventSeed))
   .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
+    console.log(data.result.n + " records inserted into the Event Schema!");
+    // process.exit(0);
   })
   .catch(err => {
     console.error(err);
