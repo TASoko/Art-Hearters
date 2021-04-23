@@ -5,6 +5,17 @@ const db = require("../models");
 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactcms");
 
+// Connect to the Mongo DB
+mongoose.connect(
+	process.env.MONGODB_URI || "mongodb://localhost/limitless-cliffs-88318",
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true,
+		useFindAndModify: false,
+	}
+).then(console.log("connected to the db!"));
+
 const jobSeed = [
   {
     user: "USER",
@@ -144,7 +155,7 @@ db.Project.remove({})
     .then(() => db.Project.collection.insertMany(projectSeed))
     .then(data => {
         console.log(data.result.n + " records inserted!");
-        process.exit(0);
+        // process.exit(0);
     })
     .catch(err => {
         console.error(err);
@@ -156,7 +167,7 @@ db.Job.remove({})
     .then(() => db.Job.collection.insertMany(jobSeed))
     .then(data => {
         console.log(data.result.n + " records inserted!");
-        process.exit(0);
+        // process.exit(0);
     })
     .catch(err => {
         console.error(err);
