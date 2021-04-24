@@ -6,7 +6,7 @@ require('dotenv').config(); // Loading dotenv to have access to env variables fo
 
 console.log(process.env.MONGODB_URI)
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI 
+mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/limitless-cliffs-88318"
 ).then(console.log("connected to the db!"));
 //||"mongodb://localhost/limitless-cliffs-88318"
 const allPostsSeed = [
