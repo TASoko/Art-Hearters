@@ -1,21 +1,21 @@
-/* .modal {
+.modal {
 border-style: solid;
-  border-width: 5px;
+  border-width: 10px;
   border-color: #EED3D1;
 
-} */
+}
 .jobs {
   border-style: solid;
-  border-width: 5px;
+  border-width: 10px;
   border-color: #EED3D1;
 }
 .events {
   border-style: solid;
-  border-width: 5px;
+  border-width: 10px;
   border-color: #D1E9EE;;
 }
 .projects {
   border-style: solid;
-  border-width: 5px;
+  border-width: 10px;
   border-color: #EDD1EE;
 }

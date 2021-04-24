@@ -242,6 +242,7 @@ function Project() {
                     value={
                       state.to && new Date(state.to).toISOString().slice(0, 16)
                     }
+                    onChange={onInputChange}
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="To"
                   />
@@ -249,7 +250,7 @@ function Project() {
               </div>
             </div>
             <hr />
-            <div className="items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+            {/* <div className="items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
               <h2 className="max-w-sm mx-auto md:w-4/12">
                 Upload an Image to be Displayed
               </h2>
@@ -259,7 +260,7 @@ function Project() {
                 </div>
               </div>
             </div>
-            <hr />
+            <hr /> */}
             <div className="w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3">
               <button
                 type="submit"
