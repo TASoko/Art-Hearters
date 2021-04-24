@@ -43,6 +43,7 @@ router.post("/", auth, async (req, res) => {
 		console.error(err.message);
 		res.status(500).json({ status: "error", message: "Something went wrong!" });
 	}
+})
 
 
 router.get("/all", async (req, res) => {
@@ -212,6 +213,7 @@ router.post("/", auth, async (req, res) => {
     res.status(500).json({ status: "error", message: "Something went wrong!" });
   }
 });
+
 
 // // @route    PUT api/projects/like/:id
 // // @desc     Like a job
