@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
+import axios from "axios";
+
 
 function ExploreCard() {
   const [showModal, setShowModal] = React.useState(false);
+
+ useEffect(() => {
+   axios.get("/api/projects/all")
+   .then(res => 
+        console.log(res.data)
+      )
+      .catch(err => console.log(err));;
+ }, []);
+  
   return (
     <div>
       <div>
@@ -49,6 +60,12 @@ function ExploreCard() {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
+                  <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                    Location:{}
+                  </p>
+                  <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                    From:{} To:{}
+                  </p>w
                   <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
                     I always felt like I could do anything. That’s the main
                     thing people are controlled by! Thoughts- their perception
