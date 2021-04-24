@@ -7,6 +7,7 @@ const checkObjectId = require("../../middleware/checkObjectId");
 const Project = require("../../models/Project");
 
 
+
 // @route    POST api/projects
 // @desc     Create a project
 // @access   Private
@@ -80,23 +81,27 @@ router.patch("/:id", auth, checkObjectId("id"), async (req, res) => {
 router.get("/all-projects", async (req, res) => {
 	console.log("pinged!")
 	try {
-		const projects = await Project.find()
-			.sort({ date: -1 })
-			.populate({
-				path: "user",
-				select: { _id: 1, name: 1, email: 1 },
-			});
-
-		res.status(200).json({
-			status: "success",
-			results: projects.length,
-			data: projects,
+		Project.find({}).then(projects => {
+			res.json(projects)
 		})
-		.then(console.log(data));
+		// const projects = await Project.find()
+		// 	.sort({ date: -1 })
+		// 	.populate({
+		// 		path: "user",
+		// 		select: { _id: 1, name: 1, email: 1 },
+		// 	});
+
+		// res.status(200).json({
+		// 	status: "success",
+		// 	results: projects.length,
+		// 	data: projects,
+		// })
+		// .then(console.log(data));
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).json({ status: "error", message: "Something went wrong!" });
 	}
+	console.log(projects)
 });
 
 // @route    GET api/projects/:id
