@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import "./project.css";
+import Uploader from "../components/Uploader/Uploader";
+
 // import Navbar from "../components/Navbar/navbar";   // COMMENTED OUT BC UNUSED...for now...
 const token = localStorage.getItem("token");
 function Event() {
@@ -242,6 +244,17 @@ function Event() {
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="To"
                   />
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div className="items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+              <h2 className="max-w-sm mx-auto md:w-4/12">
+                Upload an Image to be Displayed
+              </h2>
+              <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
+                <div className=" relative ">
+                  <Uploader />
                 </div>
               </div>
             </div>
