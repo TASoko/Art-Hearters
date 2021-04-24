@@ -29,6 +29,11 @@ const ProjectSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now,
 	},
+	aws_image_url: {
+		type: String
+	}
 });
 
-module.exports = mongoose.model("project", ProjectSchema);
+const Project = mongoose.model("Project", ProjectSchema);
+
+module.exports = Project

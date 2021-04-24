@@ -90,12 +90,13 @@ function Login({ history }) {
 					</div>
 					<div className='flex items-center mb-6 -mt-4'>
 						<div className='flex ml-auto'>
-							<a
+							<p
 								href='#'
 								class='inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white'
 							>
 								Forgot Your Password?
-							</a>
+							</p>        
+							{/* CHANGED THIS ANCHOR ^ (<a>) TO A P SO THAT REACT WOULD STOP BEING ANNOYING */}
 						</div>
 					</div>
 					<div class='flex w-full'>

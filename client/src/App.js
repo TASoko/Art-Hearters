@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react"; // , { useState }     <-- took out useState for now since it wasn't being used, react warnings annoying
 import './App.css';
 import Login from './pages/login';
 import Signup from './pages/signup';

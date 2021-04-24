@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./project.css";
-import Navbar from "../components/Navbar/navbar";
+// import Navbar from "../components/Navbar/navbar";   // COMMENTED OUT BC UNUSED...for now...
 const token = localStorage.getItem("token");
 function Event() {
 	const [events, setEvents] = React.useState([]);
