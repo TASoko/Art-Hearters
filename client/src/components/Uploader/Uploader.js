@@ -40,7 +40,6 @@ export default class Uploader extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Upload an image to AWS S3 bucket</h1>
         <input
           id='upload-image'
           type='file'

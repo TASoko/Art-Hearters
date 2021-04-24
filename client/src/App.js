@@ -10,8 +10,8 @@ import NewProject from "./pages/newproject";
 import Card from "./components/Card/card";
 import Job from './pages/jobs';
 import Event from './pages/events';
+import NewJob from './pages/newjob';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Uploader from './components/Uploader/Uploader'
 
 function App () {
 
@@ -28,9 +28,7 @@ function App () {
           <Route exact path="/card" component={Card} />
           <Route exact path="/jobs" component={Job} />
           <Route exact path="/events" component={Event} />
-        </div>
-        <div className="uploader">
-          <Uploader />
+          <Route exact path="/newjob" component={NewJob} />
         </div>
       </Router>
     );
