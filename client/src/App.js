@@ -11,6 +11,7 @@ import Card from "./components/Card/card";
 import Job from './pages/jobs';
 import Event from './pages/events';
 import NewJob from './pages/newjob';
+import NewEvent from "./pages/newevent";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App () {
@@ -29,6 +30,7 @@ function App () {
           <Route exact path="/jobs" component={Job} />
           <Route exact path="/events" component={Event} />
           <Route exact path="/newjob" component={NewJob} />
+          <Route exact path="/newevent" component={NewEvent} />
         </div>
       </Router>
     );
