@@ -8,6 +8,43 @@ const Project = require("../../models/Project");
 const Event = require("../../models/Event");
 const Job = require("../../models/Job");
 
+
+
+
+
+// @route    POST api/projects
+// @desc     Create a project
+// @access   Private
+router.post("/", auth, async (req, res) => {
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		return res.status(400).json({ errors: errors.array() });
+	}
+
+	try {
+		const { project, location, description, from, to } = req.body;
+
+		const newProject = await Project.create({
+			user: req.user.id,
+			project,
+			location,
+			description,
+			from,
+			to,
+		});
+
+		res.status(200).json({
+			status: "success",
+			data: {
+				project: newProject,
+			},
+		});
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).json({ status: "error", message: "Something went wrong!" });
+	}
+
+
 router.get("/all", async (req, res) => {
     try {
       const projects = await Project.find({}).sort({ date: -1 })
@@ -62,6 +99,7 @@ router.patch("/:id", auth, checkObjectId("id"), async (req, res) => {
 // @route    GET api/projects
 // @desc     Get all projects
 // @access   Public
+
 // router.get("/", async (req, res) => {
 // 	try {
 // 		const projects = await Project.find()
@@ -81,6 +119,7 @@ router.patch("/:id", auth, checkObjectId("id"), async (req, res) => {
 // 		res.status(500).json({ status: "error", message: "Something went wrong!" });
 // 	}
 // });
+
 
 // @route    GET api/projects/:id
 // @desc     Get project by ID

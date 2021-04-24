@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 const db = require("../models");
+require('dotenv').config(); // Loading dotenv to have access to env variables for amazon s3 upload
 
+
+
+console.log(process.env.MONGODB_URI)
 // Connect to the Mongo DB
-mongoose.connect(
-	process.env.MONGODB_URI || "mongodb://localhost/limitless-cliffs-88318",
-	{
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true,
-		useFindAndModify: false,
-	}
+mongoose.connect(process.env.MONGODB_URI ||"mongodb://localhost/limitless-cliffs-88318"
 ).then(console.log("connected to the db!"));
+//||"mongodb://localhost/limitless-cliffs-88318"
+const allPostsSeed = [
+]
 
 const jobSeed = [
   {
@@ -146,38 +146,43 @@ const projectSeed = [
     }
   ];
 
-// empty the projects schema then add the seeds
-db.Project.remove({})
-    .then(() => db.Project.collection.insertMany(projectSeed))
-    .then(data => {
-        console.log(data.result.n + " records inserted into the Project Schema!");
-        // process.exit(0);
-    })
-    .catch(err => {
-        console.error(err);
-        process.exit(1);
-    });
+// // empty the projects schema then add the seeds
+// db.Project.deleteMany({})
+//     // .then(console.log(db.Project))
+//     // .then(console.log(db.Project.collection))
+//     // .then(console.log(db.Project.projects))
+//     .then(() => db.Project.collection.insertMany(projectSeed))
+//     .then(data => {
+//         // console.log(data)
+//         console.log(data.result.n + " records inserted into the Project Schema!");
+//         process.exit(0);
+//     })
+//     .catch(err => {
+//         console.error(err);
+//         process.exit(1);
+//     });
 
-// empty the jobs schema then add the seeds
-db.Job.remove({})
-    .then(() => db.Job.collection.insertMany(jobSeed))
-    .then(data => {
-        console.log(data.result.n + " records inserted into the Job Schema!");
-        // process.exit(0);
-    })
-    .catch(err => {
-        console.error(err);
-        process.exit(1);
-    });
+// // empty the jobs schema then add the seeds
+// db.Job.deleteMany({})
+//     .then(() => db.Job.collection.insertMany(jobSeed))
+//     .then(data => {
+//         console.log(data.result.n + " records inserted into the Job Schema!");
+//         process.exit(0);
+//     })
+//     .catch(err => {
+//         console.error(err);
+//         process.exit(1);
+//     });
 
-// empty the events schema then add the seeds
-db.Event.remove({})
-  .then(() => db.Event.collection.insertMany(eventSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted into the Event Schema!");
-    // process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+// // empty the events schema then add the seeds
+// db.Event.deleteMany({})
+//   .then(() => db.Event.collection.insertMany(eventSeed))
+//   .then(data => {
+//     console.log(data)
+//     console.log(data.result.n + " records inserted into the Event Schema!");
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+//   });
