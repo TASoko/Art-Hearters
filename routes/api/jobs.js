@@ -84,7 +84,7 @@ router.get("/", async (req, res) => {
 		const jobs = await Job.find()
 			.sort({ date: -1 })
 			.populate({
-				path: "user",
+				path: "User",
 				select: { _id: 1, name: 1, email: 1 },
 			});
 
@@ -105,7 +105,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", auth, checkObjectId("id"), async (req, res) => {
 	try {
 		const job = await Job.findById(req.params.id).populate({
-			path: "user",
+			path: "User",
 			select: { _id: 1, name: 1, email: 1 },
 		});
 
