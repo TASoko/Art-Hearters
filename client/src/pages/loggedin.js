@@ -44,7 +44,7 @@ function LoggedIn({ history }) {
 	return (
 		<div style={{ backgroundColor: "white" }}>
 			<CreateNavbar />
-			<h1 style={{ fontSize: "60px" }}>Welcome to Back</h1>
+			<h1 style={{ fontSize: "60px" }}>Welcome Back</h1>
 			<div className='buttons'>
 				<button
 					type='button'
