@@ -101,10 +101,10 @@ function Job() {
 		return jobs.length > 0 ? (
 			<table border>
 				<tr>
-					{/* <th>Description</th> */}
-					<th>Location</th>
+				<th>Position</th>
+					<th>Description</th>
 					<th>Team</th>
-					<th>Position</th>
+					<th>Location</th>
 					<th>From</th>
 					<th>To</th>
 					<th>Actions</th>
@@ -114,10 +114,11 @@ function Job() {
 					return (
 						<tr key={_id}>
 							
-							<td>{description}</td>
-							<td>{location}</td>
 							<td>{position}</td>
+							<td>{description}</td>
 							<td>{team}</td>
+							<td>{location}</td>
+						
 							<td>
 								{new Date(from).toLocaleString("en-us", {
 									month: "long",
@@ -157,7 +158,7 @@ function Job() {
 	const displayJobForm = () => {
 		return (
       <section className="h-screen bg-gray-100 bg-opacity-50">
-        <form className="container max-w-2xl mx-auto shadow-md md:w-3/4">
+        <form onSubmit={handleSubmit} className="container max-w-2xl mx-auto shadow-md md:w-3/4">
           <div className="p-4 bg-gray-100 border-t-2 border-indigo-400 rounded-lg bg-opacity-5">
             <div className="max-w-sm mx-auto md:w-full md:mx-0">
               <div className="inline-flex items-center space-x-4">
@@ -258,6 +259,7 @@ function Job() {
                     value={
                       state.to && new Date(state.to).toISOString().slice(0, 16)
                     }
+					onChange={onInputChange}
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                     placeholder="To"
                   />

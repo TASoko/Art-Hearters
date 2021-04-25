@@ -27,23 +27,21 @@ function Event() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const {  title, location, description, to, from } = state;
+			const { title, location, description, to, from } = state;
 
 			// Validate the inputs
-			
-			if ( !title||!location || !description || !to || !from ) {
+
+			if (!title || !location || !description || !to || !from) {
 				return alert("Fill up the empty field!");
 			}
 
-			const data = { ...state};
+			const data = { ...state };
 
 			// Remove the id
 			delete data._id;
 
 			const method = isUpdateEvent ? "PATCH" : "POST";
-			const url = isUpdateEvent
-				? `/api/events/${state._id}`
-				: "/api/events";
+			const url = isUpdateEvent ? `/api/events/${state._id}` : "/api/events";
 
 			const res = await axios({
 				method,
@@ -79,7 +77,7 @@ function Event() {
 				await axios.delete(`/api/events/${eventId}`, {
 					headers: { "x-auth-token": token },
 				});
-				// Get all projects
+				// Get all events
 				getAllEvents();
 			}
 		} catch (error) {
@@ -113,11 +111,10 @@ function Event() {
 					const { _id, title, location, description, to, from } = el;
 					return (
 						<tr key={_id}>
-							
 							<td>{description}</td>
 							<td>{location}</td>
 							<td>{title}</td>
-								<td>
+							<td>
 								{new Date(from).toLocaleString("en-us", {
 									month: "long",
 									year: "numeric",
@@ -155,122 +152,126 @@ function Event() {
 	};
 	const displayEventForm = () => {
 		return (
-      <section className="h-screen bg-gray-100 bg-opacity-50">
-        <form className="container max-w-2xl mx-auto shadow-md md:w-3/4">
-          <div className="p-4 bg-gray-100 border-t-2 border-indigo-400 rounded-lg bg-opacity-5">
-            <div className="max-w-sm mx-auto md:w-full md:mx-0">
-              <div className="inline-flex items-center space-x-4">
-                <h1 className="text-gray-600" style={{ fontSize: "55px" }}>
-                  Create an Event
-                </h1>
-              </div>
-            </div>
-          </div>
-          <div className="space-y-6 bg-white">
-            <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-              <h2 className="max-w-sm mx-auto md:w-1/3">Event Name</h2>
-              <div className="max-w-sm mx-auto md:w-2/3">
-                <div className=" relative ">
-                  <input
-                    type="text"
-                    name="title"
-                    value={state.title}
-                    onChange={onInputChange}
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="Event Name"
-                  />
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-              <h2 className="max-w-sm mx-auto md:w-1/3">Description</h2>
-              <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
-                <div>
-                  <div className=" relative ">
-                    <textarea
-                      name="description"
-                      value={state.description}
-                      onChange={onInputChange}
-                      class="block w-full h-40 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                      placeholder="Description"
-                    ></textarea>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-              <h2 className="max-w-sm mx-auto md:w-4/12">Location</h2>
-              <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
-                <div className=" relative ">
-                  <input
-                    type="text"
-                    name="location"
-                    value={state.location}
-                    onChange={onInputChange}
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="Location"
-                  />
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-              <h2 className="max-w-sm mx-auto md:w-4/12">Date</h2>
-              <div className="max-w-sm mx-auto space-y-5 md:w-1/3">
-                <div className=" relative ">
-                  <input
-                    type="datetime-local"
-                    name="from"
-                    value={
-                      state.from &&
-                      new Date(state.from).toISOString().slice(0, 16)
-                    }
-                    onChange={onInputChange}
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="From"
-                  />
-                </div>
-              </div>
-              <div className="max-w-sm mx-auto space-y-5 md:w-1/3">
-                <div className=" relative ">
-                  <input
-                    type="datetime-local"
-                    name="to"
-                    value={
-                      state.to && new Date(state.to).toISOString().slice(0, 16)
-                    }
-                    className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                    placeholder="To"
-                  />
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-              <h2 className="max-w-sm mx-auto md:w-4/12">
-                Upload an Image to be Displayed
-              </h2>
-              <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
-                <div className=" relative ">
-                  <Uploader />
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3">
-              <button
-                type="submit"
-                className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
-              >
-                {isUpdateEvent ? "Update" : "Submit"}
-              </button>
-            </div>
-          </div>
-        </form>
-      </section>
-    );
+			<section className='h-screen bg-gray-100 bg-opacity-50'>
+				<form
+					onSubmit={handleSubmit}
+					className='container max-w-2xl mx-auto shadow-md md:w-3/4'
+				>
+					<div className='p-4 bg-gray-100 border-t-2 border-indigo-400 rounded-lg bg-opacity-5'>
+						<div className='max-w-sm mx-auto md:w-full md:mx-0'>
+							<div className='inline-flex items-center space-x-4'>
+								<h1 className='text-gray-600' style={{ fontSize: "55px" }}>
+									Create an Event
+								</h1>
+							</div>
+						</div>
+					</div>
+					<div className='space-y-6 bg-white'>
+						<div className='items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0'>
+							<h2 className='max-w-sm mx-auto md:w-1/3'>Event Name</h2>
+							<div className='max-w-sm mx-auto md:w-2/3'>
+								<div className=' relative '>
+									<input
+										type='text'
+										name='title'
+										value={state.title}
+										onChange={onInputChange}
+										className=' rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+										placeholder='Event Name'
+									/>
+								</div>
+							</div>
+						</div>
+						<hr />
+						<div className='items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0'>
+							<h2 className='max-w-sm mx-auto md:w-1/3'>Description</h2>
+							<div className='max-w-sm mx-auto space-y-5 md:w-2/3'>
+								<div>
+									<div className=' relative '>
+										<textarea
+											name='description'
+											value={state.description}
+											onChange={onInputChange}
+											class='block w-full h-40 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
+											placeholder='Description'
+										></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr />
+						<div className='items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0'>
+							<h2 className='max-w-sm mx-auto md:w-4/12'>Location</h2>
+							<div className='max-w-sm mx-auto space-y-5 md:w-2/3'>
+								<div className=' relative '>
+									<input
+										type='text'
+										name='location'
+										value={state.location}
+										onChange={onInputChange}
+										className=' rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+										placeholder='Location'
+									/>
+								</div>
+							</div>
+						</div>
+						<hr />
+						<div className='items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0'>
+							<h2 className='max-w-sm mx-auto md:w-4/12'>Date</h2>
+							<div className='max-w-sm mx-auto space-y-5 md:w-1/3'>
+								<div className=' relative '>
+									<input
+										type='datetime-local'
+										name='from'
+										value={
+											state.from &&
+											new Date(state.from).toISOString().slice(0, 16)
+										}
+										onChange={onInputChange}
+										className=' rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+										placeholder='From'
+									/>
+								</div>
+							</div>
+							<div className='max-w-sm mx-auto space-y-5 md:w-1/3'>
+								<div className=' relative '>
+									<input
+										type='datetime-local'
+										name='to'
+										value={
+											state.to && new Date(state.to).toISOString().slice(0, 16)
+										}
+										onChange={onInputChange}
+										className=' rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+										placeholder='To'
+									/>
+								</div>
+							</div>
+						</div>
+						<hr />
+						<div className='items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0'>
+							<h2 className='max-w-sm mx-auto md:w-4/12'>
+								Upload an Image to be Displayed
+							</h2>
+							<div className='max-w-sm mx-auto space-y-5 md:w-2/3'>
+								<div className=' relative '>
+									<Uploader />
+								</div>
+							</div>
+						</div>
+						<hr />
+						<div className='w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3'>
+							<button
+								type='submit'
+								className='py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
+							>
+								{isUpdateEvent ? "Update" : "Submit"}
+							</button>
+						</div>
+					</div>
+				</form>
+			</section>
+		);
 	};
 	return (
 		<div>
@@ -282,7 +283,7 @@ function Event() {
 					onClick={() => {
 						setShowForm(false);
 						setIsUpdateEvent(false);
-						setState({})
+						setState({});
 					}}
 				>
 					Go back
