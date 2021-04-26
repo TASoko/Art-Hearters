@@ -159,9 +159,14 @@ function Event() {
 					<th>Actions</th>
 				</tr>
 				{events.map((el) => {
-					const { _id, title, location, description, to, from } = el;
+					const { _id, title, location, description, to, from, aws_image_url} = el;
 					return (
 						<tr key={_id}>
+							<td>
+							<img src={aws_image_url} alt=""></img>
+								
+								
+								</td>
 							<td>{description}</td>
 							<td>{location}</td>
 							<td>{title}</td>
