@@ -45,12 +45,12 @@ function Explore ({ history }) {
 	}, []);
 	return (
 		<div style={{ backgroundColor: "white" }}>
-			<CreateNavbar />
+			<Navbar />
 			<h1 style={{ fontSize: "60px" }}>Welcome Back</h1>
 			<div className='buttons'>
 				<button
 					type='button'
-					onClick={() => history.push("jobs")}
+					// onClick={() => history.push("jobs")}
 					className='jobs py-4 px-6  bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  '
 				>
 					Jobs
@@ -58,7 +58,7 @@ function Explore ({ history }) {
 
 				<button
 					type='button'
-					onClick={() => history.push("events")}
+					// onClick={() => history.push("events")}
 					className='events py-4 px-6  bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  '
 				>
 					Events
@@ -66,7 +66,7 @@ function Explore ({ history }) {
 
 				<button
 					type='button'
-					onClick={() => history.push("project")}
+					// onClick={() => history.push("projects")}
 					className='projects py-4 px-6  bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  '
 				>
 					Projects
@@ -78,7 +78,6 @@ function Explore ({ history }) {
         />
          </div> */}
 			</div>
-			<h1>Projects</h1>
 			<div className='flex flex-wrap -m-4'>
 				{data.projects &&
 					data.projects.map((project, i) => (
@@ -87,7 +86,6 @@ function Explore ({ history }) {
 						</div>
 					))}
 			</div>
-			<h1>Jobs</h1>
 			<div className='flex flex-wrap -m-4'>
 				{data.jobs &&
 					data.jobs.map((job, i) => (
@@ -96,7 +94,6 @@ function Explore ({ history }) {
 						</div>
 					))}
 			</div>
-			<h1>Events</h1>
 			<div className='flex flex-wrap -m-4'>
 				{data.events &&
 					data.events.map((event, i) => (

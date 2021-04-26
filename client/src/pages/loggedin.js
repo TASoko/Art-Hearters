@@ -76,7 +76,6 @@ function LoggedIn({ history }) {
         />
          </div> */}
 			</div>
-			<h1>Projects</h1>
 			<div className='flex flex-wrap -m-4'>
 				{data.projects &&
 					data.projects.map((project, i) => (
@@ -85,7 +84,6 @@ function LoggedIn({ history }) {
 						</div>
 					))}
 			</div>
-			<h1>Jobs</h1>
 			<div className='flex flex-wrap -m-4'>
 				{data.jobs &&
 					data.jobs.map((job, i) => (
@@ -94,7 +92,6 @@ function LoggedIn({ history }) {
 						</div>
 					))}
 			</div>
-			<h1>Events</h1>
 			<div className='flex flex-wrap -m-4'>
 				{data.events &&
 					data.events.map((event, i) => (
