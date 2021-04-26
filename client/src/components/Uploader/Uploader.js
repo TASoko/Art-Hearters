@@ -16,7 +16,8 @@ export default class Uploader extends Component {
     message:''
   };
 
-  getImage = e => {
+  // written here but actually called in events.js
+  uploadImage = e => {
     e.preventDefault();
     const files = document.querySelector("#upload-image").files;
     console.log("Files Uploaded: " + files)
@@ -46,9 +47,10 @@ export default class Uploader extends Component {
           accept='image/*'
         />
         <form onSubmit={this.uploadFile}>
-          <button onClick={this.getImage} id='file-upload-button'>Upload</button>
+          <button onClick={this.uploadImage} id='file-upload-button'>Upload</button>
         </form>
       </React.Fragment>
     );
   }
 }
+

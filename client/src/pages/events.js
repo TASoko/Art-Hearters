@@ -2,16 +2,17 @@ import React from "react";
 import axios from "axios";
 import "./project.css";
 import Uploader from "../components/Uploader/Uploader";
-
 // import Navbar from "../components/Navbar/navbar";   // COMMENTED OUT BC UNUSED...for now...
+
+
 const token = localStorage.getItem("token");
+
 function Event() {
 	const [events, setEvents] = React.useState([]);
 	const [showForm, setShowForm] = React.useState(false);
 	const [isUpdateEvent, setIsUpdateEvent] = React.useState(false);
 	const [state, setState] = React.useState({});
 
-	
 
 	const getAllEvents = async () => {
 		try {
@@ -22,9 +23,9 @@ function Event() {
 		}
 	};
 
-	const getImage = e => {
+	const uploadImage = e => {
 		// e.preventDefault();
-		console.log("hit")
+		console.log("hit get image")
 		const files = document.querySelector("#upload-image").files;
 		console.log("Files Uploaded: " + files)
 		console.log("First file, which will be uploaded: " + files[0])
@@ -47,12 +48,11 @@ function Event() {
 	  }}
 
 	  const getURLofImage = file => {
-		// e.preventDefault();
-		// this.setState({ message: 'Loading...' });
-		// const filename = document.querySelector('#filename').value;
-		 console.log("filenmae form getURL " + file)
-	  }
-	// 	const generateGetUrl = `https://wjr-bucket-1.s3.us-east-2.amazonaws.com/${filename}`;
+		console.log("filename form getURL " + file)
+		const filename = file
+		const getURL = `https://wjr-bucket-1.s3.us-east-2.amazonaws.com/${filename}`;
+		console.log(getURL)
+		}
 	// 	const options = {
 	// 	  params: {
 	// 		Key: filename,
@@ -65,11 +65,11 @@ function Event() {
 	// 	});
 	//   };
 
-	  const bigSubmit = e => {
-		e.preventDefault()
-		getImage()
+	//   const bigSubmit = e => {
+	// 	e.preventDefault()
+	// 	uploadImage()
 		// getURLofImage()
-	}
+	// }
 
 	React.useEffect(() => {
 		getAllEvents();
@@ -78,13 +78,16 @@ function Event() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const { title, location, description, to, from } = state;
+			const { title, location, description, to, from, aws_image_url } = state;
 
 			// Validate the inputs
 
 			if (!title || !location || !description || !to || !from) {
 				return alert("Fill up the empty field!");
 			}
+
+			// JACK'S ADDITIONS HERE FOR IMAGE
+			uploadImage()
 
 			const data = { ...state };
 
@@ -311,14 +314,14 @@ function Event() {
 							</h2>
 							<div className='max-w-sm mx-auto space-y-5 md:w-2/3'>
 								<div className=' relative '>
-									<Uploader />
+									<Uploader value={state.aws_image_url} />
 								</div>
 							</div>
 						</div>
 						<hr />
 						<div className='w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3'>
 							<button
-								onClick={bigSubmit}
+								// onClick={bigSubmit}
 								type='submit'
 								className='py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
 							>
@@ -355,7 +358,7 @@ function Event() {
 				</button>
 			)}
 
-			<h1>AllEvents</h1>
+			<h1>All Events</h1>
 			<hr />
 
 			{showForm ? displayEventForm() : displayEvents()}
