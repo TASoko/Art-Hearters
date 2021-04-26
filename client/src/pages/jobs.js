@@ -169,7 +169,7 @@ function Job() {
                               <a href="#" className="block relative">
                                 <img
                                   alt="position image"
-                                  src={"/images/person/8.jpg"}
+                                  src={"../images/chalk-rocks.jpeg"}
                                   className="mx-auto object-cover rounded-full h-10 w-10 "
                                 />
                               </a>

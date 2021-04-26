@@ -9,6 +9,11 @@ function ProjectCard({ data }) {
 		<div>
 			<div>
 				<div className='flex relative'>
+					 <img
+            alt="gallery"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            src={data?.aws_image_url}
+          />
 					<div
 						className='px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-100 '
 						onClick={() => setShowModal(true)}
