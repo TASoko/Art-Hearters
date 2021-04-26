@@ -20,12 +20,39 @@ function Job() {
 		}
 	};
 
+  const getImage = e => {
+    e.preventDefault();
+    console.log("getting the image")
+  //   const files = document.querySelector("#upload-image").files;
+  //   console.log("Files Uploaded: " + files)
+  //   console.log("First file, which will be uploaded: " + files[0])
+  //   const formData = new FormData()
+  //   formData.append("image", files[0])
+  //   // const filename = files[0].name
+  //   if (files && files.length > 0) {
+  //     // const file = files[0];
+  //     // this.setState({ file });
+  //     console.log("got the image")
+  //     console.log(formData.get("image"))
+  //     console.log('about to fetch...')
+  //     fetch("/api/assets/upload", {
+  //       method: "POST",
+  //       body: formData
+  //     })
+  //   }
+  };
+
+  
+
 	React.useEffect(() => {
 		getAllJobs();
 	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+    
+
 		try {
 			const {  team, location, description, position, to, from } = state;
 
@@ -369,9 +396,12 @@ function Job() {
             </div>
             <hr />
             <div className="w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3">
-              <button
+              <button 
+                onClick={getImage}
                 type="submit"
                 className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                    
+
               >
                 {isUpdateJob ? "Update" : "Submit"}
               </button>
