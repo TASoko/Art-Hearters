@@ -6,12 +6,8 @@ import Home from './pages/home';
 import Explore from './pages/explore';
 import LoggedIn from './pages/loggedin';
 import Project from './pages/project';
-import NewProject from "./pages/newproject";
-import Card from "./components/Card/card";
 import Job from './pages/jobs';
 import Event from './pages/events';
-import NewJob from './pages/newjob';
-import NewEvent from "./pages/newevent";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App () {
@@ -25,12 +21,8 @@ function App () {
           <Route exact path="/explore" component={Explore} />
           <Route exact path="/loggedIn" component={LoggedIn} />
           <Route exact path="/project" component={Project} />
-          <Route exact path="/newproject" component={NewProject} />
-          <Route exact path="/card" component={Card} />
           <Route exact path="/jobs" component={Job} />
           <Route exact path="/events" component={Event} />
-          <Route exact path="/newjob" component={NewJob} />
-          <Route exact path="/newevent" component={NewEvent} />
         </div>
       </Router>
     );

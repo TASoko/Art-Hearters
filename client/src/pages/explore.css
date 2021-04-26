@@ -1,4 +1,17 @@
-
+.wrapper {
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(130ch, 100%)
+    1fr;
+}
+.wrapper > * {
+  grid-column: 2;
+}
+.full-bleed {
+  width: 100%;
+  grid-column: 1 / 4;
+}
 .jobs {
     background-color: #EED3D1;
     width: 200px;

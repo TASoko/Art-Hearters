@@ -9,7 +9,7 @@ function Navbar({ history }) {
 				<div className='max-w-7xl mx-auto px-8'>
 					<div className='flex items-center justify-between h-16'>
 						<div className='w-full justify-between flex items-center'>
-							{/* <a className='flex-shrink-0' href='/'></a>   COMMENTED OUT BC OF REACT WARNINGS (UNUSED) */}
+							<a className='flex-shrink-0' href='/'></a> 
 							<div className='hidden md:block'>
 								<div className='ml-10 flex items-baseline space-x-4'>
 									<button
