@@ -1,6 +1,62 @@
 import React from "react";
 // import "./newjob.css";
-
+	// const displayJobs = () => {
+	// 	return jobs.length > 0 ? (
+	// 		<table border>
+	// 			<tr>
+	// 			<th>Position</th>
+	// 				<th>Description</th>
+	// 				<th>Team</th>
+	// 				<th>Location</th>
+	// 				<th>From</th>
+	// 				<th>To</th>
+	// 				<th>Actions</th>
+	// 			</tr>
+	// 			{jobs.map((el) => {
+	// 				const { _id, position, team, location, description, to, from } = el;
+	// 				return (
+	// 					<tr key={_id}>
+							
+	// 						<td>{position}</td>
+	// 						<td>{description}</td>
+	// 						<td>{team}</td>
+	// 						<td>{location}</td>
+						
+	// 						<td>
+	// 							{new Date(from).toLocaleString("en-us", {
+	// 								month: "long",
+	// 								year: "numeric",
+	// 								day: "numeric",
+	// 							})}
+	// 						</td>
+	// 						<td>
+	// 							{new Date(to).toLocaleString("en-us", {
+	// 								month: "long",
+	// 								year: "numeric",
+	// 								day: "numeric",
+	// 							})}
+	// 						</td>
+	// 						<td>
+	// 							<button
+	// 								onClick={() => handleJobUpdate(el)}
+	// 								className='py-2 px-4 m-2  bg-green-600 hover:bg-green-500 focus:ring-green-500 focus:ring-offset-green-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
+	// 							>
+	// 								Edit
+	// 							</button>
+	// 							<button
+	// 								onClick={() => handleJobDelete(_id)}
+	// 								className='py-2 px-4 m-2  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
+	// 							>
+	// 								Delete
+	// 							</button>
+	// 						</td>
+	// 					</tr>
+	// 				);
+	// 			})}
+	// 		</table>
+	// 	) : (
+	// 		<h2>No Jobs available at the moment!</h2>
+	// 	);
 function NewJob() {
   return (
     <section className="h-screen bg-gray-100 bg-opacity-50">
