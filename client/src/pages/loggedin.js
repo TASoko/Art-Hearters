@@ -42,7 +42,7 @@ function LoggedIn({ history }) {
 		getAllData();
 	}, []);
 	return (
-		<div style={{ backgroundColor: "white" }}>
+		<div style={{ backgroundColor: "white" }} className="wrapper">
 			<CreateNavbar />
 			<h1 style={{ fontSize: "60px" }}>Welcome Back</h1>
 			<div className='buttons'>

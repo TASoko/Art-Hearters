@@ -1,7 +1,6 @@
 import React from "react";
 import "./explore.css";
 import axios from "axios";
-import CreateNavbar from "../components/CreateNavbar";
 import Navbar from "../components/Navbar/navbar";
 import ExploreCard from "../components/Card/explorecard";
 import ProjectCard from "../components/Card/projectcard";
@@ -44,9 +43,9 @@ function Explore ({ history }) {
 		getAllData();
 	}, []);
 	return (
-		<div style={{ backgroundColor: "white" }}>
+		<div style={{ backgroundColor: "white" }} className="wrapper">
 			<Navbar />
-			<h1 style={{ fontSize: "60px" }}>Welcome Back</h1>
+			<h1 style={{ fontSize: "60px" }}>Welcome to Renaissance</h1>
 			<div className='buttons'>
 				<button
 					type='button'
