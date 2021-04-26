@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "./project.css";
+import "./job.css";
 import Uploader from "../components/Uploader/Uploader";
 
 // import Navbar from "../components/Navbar/navbar";    // COMMENTED OUT BC UNUSED...for now...
@@ -99,7 +99,7 @@ function Job() {
 
 	const displayJobs = () => {
     return jobs.length > 0 ? (
-      <div style={{ backgroundColor: "white" }}>
+      <div>
         <div className="container mx-auto px-4 sm:px-8 max-w-3x">
           <div className="py-8">
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">

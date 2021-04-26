@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "./project.css";
+import "./event.css";
 import Uploader from "../components/Uploader/Uploader";
 
 // import Navbar from "../components/Navbar/navbar";   // COMMENTED OUT BC UNUSED...for now...
