@@ -23,7 +23,7 @@ function Event() {
 	};
 
 	const getImage = e => {
-		e.preventDefault();
+		// e.preventDefault();
 		console.log("hit")
 		const files = document.querySelector("#upload-image").files;
 		console.log("Files Uploaded: " + files)
@@ -42,30 +42,34 @@ function Event() {
 			method: "POST",
 			body: formData
 		  })
-		}
-	  };
+		  console.log("after post fetch");
+		  getURLofImage(filename)
+	  }}
 
-	  const getURLofImage = e => {
-		e.preventDefault();
-		this.setState({ message: 'Loading...' });
-		const filename = document.querySelector('#filename').value;
-		const generateGetUrl = 'http://localhost:4000/generate-get-url';
-		const options = {
-		  params: {
-			Key: filename,
-			ContentType: 'image/jpeg'
-		  }
-		};
-		axios.get(generateGetUrl, options).then(res => {
-		  const { data: getURL } = res;
-		  this.setState({ getURL });
-		});
-	  };
+	  const getURLofImage = file => {
+		// e.preventDefault();
+		// this.setState({ message: 'Loading...' });
+		// const filename = document.querySelector('#filename').value;
+		 console.log("filenmae form getURL " + file)
+	  }
+	// 	const generateGetUrl = `https://wjr-bucket-1.s3.us-east-2.amazonaws.com/${filename}`;
+	// 	const options = {
+	// 	  params: {
+	// 		Key: filename,
+	// 		ContentType: 'image/jpeg'
+	// 	  }
+	// 	};
+	// 	axios.get(generateGetUrl, options).then(res => {
+	// 	  const { data: getURL } = res;
+	// 	  this.setState({ getURL });
+	// 	});
+	//   };
 
-	//   const bigSubmit = e => {
-	// 	getImage
-	// 	getURLofImage
-	// }
+	  const bigSubmit = e => {
+		e.preventDefault()
+		getImage()
+		// getURLofImage()
+	}
 
 	React.useEffect(() => {
 		getAllEvents();
@@ -309,7 +313,7 @@ function Event() {
 						<hr />
 						<div className='w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3'>
 							<button
-								onClick={getImage}
+								onClick={bigSubmit}
 								type='submit'
 								className='py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg '
 							>
