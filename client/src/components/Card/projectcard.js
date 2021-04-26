@@ -7,27 +7,27 @@ function ProjectCard({ data }) {
 
 	return (
     <div>
-        <div className="flex relative">
-          <img
-            alt="gallery"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            src={data?.aws_image_url}
-          />
-          <div
-            className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
-            onClick={() => setShowModal(true)}
-          >
-            <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
-              Project
-            </h2>
-            <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-              {data?.project}
-            </h1>
-            <p className="leading-relaxed">
-              {data?.description.substr(0, 120)} ...
-            </p>
-          </div>
+      <div className="flex relative">
+        <img
+          alt="gallery"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          src={data?.aws_image_url}
+        />
+        <div
+          className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100"
+          onClick={() => setShowModal(true)}
+        >
+          <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
+            Project
+          </h2>
+          <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+            {data?.project}
+          </h1>
+          <p className="leading-relaxed">
+            {data?.description.substr(0, 120)} ...
+          </p>
         </div>
+      </div>
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">

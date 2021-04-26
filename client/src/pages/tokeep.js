@@ -266,3 +266,30 @@
           </form>
         </div>
       </div>;
+
+      <button
+        onClick={() => handleProjectUpdate(el)}
+        className="py-2 px-4 m-2  bg-green-600 hover:bg-green-500 focus:ring-green-500 focus:ring-offset-green-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+      >
+        Edit
+      </button>;
+
+        <button
+          onClick={() => handleProjectDelete(_id)}
+          className="py-2 px-4 m-2  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+        >
+          Delete
+        </button>;
+
+                        <button
+                          onClick={() => handleEventUpdate(el)}
+                          className="py-2 px-4 m-2  bg-green-600 hover:bg-green-500 focus:ring-green-500 focus:ring-offset-green-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                        >
+                          Edit
+                        </button>;
+                         <button
+                           onClick={() => handleEventDelete(_id)}
+                           className="py-2 px-4 m-2  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                         >
+                           Delete
+                         </button>;

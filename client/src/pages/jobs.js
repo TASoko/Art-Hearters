@@ -99,143 +99,145 @@ function Job() {
 
 	const displayJobs = () => {
     return jobs.length > 0 ? (
-      <div className="container mx-auto px-4 sm:px-8 max-w-3x">
-        <div className="py-8">
-          <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-              <table className="min-w-full leading-normal">
-                <thead>
-                  <tr>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Position
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Description
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Team
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Location
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      From
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      To
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
-                    >
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                {jobs.map((el) => {
-                  const {
-                    _id,
-                    position,
-                    team,
-                    location,
-                    description,
-                    to,
-                    from,
-                  } = el;
-                  return (
-                    <tbody>
-                      <tr key={_id}>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <div className="flex items-center">
-                            <div className="flex-shrink">
-                              <a href="#" className="block relative">
-                                <img
-                                  alt="position image"
-                                  src={"../images/chalk-rocks.jpeg"}
-                                  className="mx-auto object-cover rounded-full h-10 w-10 "
-                                />
-                              </a>
+      <div style={{ backgroundColor: "white" }}>
+        <div className="container mx-auto px-4 sm:px-8 max-w-3x">
+          <div className="py-8">
+            <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+              <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                <table className="min-w-full leading-normal">
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      >
+                        Position
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      >
+                        Description
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      >
+                        Team
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      >
+                        Location
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      >
+                        From
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      >
+                        To
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      >
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  {jobs.map((el) => {
+                    const {
+                      _id,
+                      position,
+                      team,
+                      location,
+                      description,
+                      to,
+                      from,
+                    } = el;
+                    return (
+                      <tbody>
+                        <tr key={_id}>
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <div className="flex items-center">
+                              <div className="flex-shrink">
+                                <a href="#" className="block relative">
+                                  <img
+                                    alt="position image"
+                                    src={"../images/chalk-rocks.jpeg"}
+                                    className="mx-auto object-cover rounded-full h-10 w-10 "
+                                  />
+                                </a>
+                              </div>
+                              <div className="ml-3">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  {position}
+                                </p>
+                              </div>
                             </div>
-                            <div className="ml-3">
-                              <p className="text-gray-900 whitespace-no-wrap">
-                                {position}
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {description}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {team}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {location}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {new Date(from).toLocaleString("en-us", {
-                              month: "long",
-                              year: "numeric",
-                              day: "numeric",
-                            })}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {new Date(to).toLocaleString("en-us", {
-                              month: "long",
-                              year: "numeric",
-                              day: "numeric",
-                            })}
-                          </p>
-                        </td>
-                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <a
-                            href="#"
-                            className="text-indigo-600 hover:text-indigo-900"
-                            onClick={() => handleJobUpdate(el)}
-                          >
-                            Edit
-                          </a>
-                          <br></br>
-                          <a
-                            href="#"
-                            className="text-indigo-600 hover:text-indigo-900"
-                            onClick={() => handleJobDelete(_id)}
-                          >
-                            Delete
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  );
-                })}
-              </table>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {description}
+                            </p>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {team}
+                            </p>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {location}
+                            </p>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {new Date(from).toLocaleString("en-us", {
+                                month: "long",
+                                year: "numeric",
+                                day: "numeric",
+                              })}
+                            </p>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {new Date(to).toLocaleString("en-us", {
+                                month: "long",
+                                year: "numeric",
+                                day: "numeric",
+                              })}
+                            </p>
+                          </td>
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <a
+                              href="#"
+                              className="text-indigo-600 hover:text-indigo-900"
+                              onClick={() => handleJobUpdate(el)}
+                            >
+                              Edit
+                            </a>
+                            <br></br>
+                            <a
+                              href="#"
+                              className="text-indigo-600 hover:text-indigo-900"
+                              onClick={() => handleJobDelete(_id)}
+                            >
+                              Delete
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    );
+                  })}
+                </table>
+              </div>
             </div>
           </div>
         </div>
