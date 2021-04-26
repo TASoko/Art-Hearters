@@ -21,7 +21,9 @@ function EventCard({ data }) {
             <h2 className="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">
               {data?.event}
             </h2>
-            <p className="leading-relaxed">{data?.description}</p>
+            <p className="leading-relaxed">
+              {data?.description.substr(0, 100)}
+            </p>
           </div>
         </div>
       </div>
