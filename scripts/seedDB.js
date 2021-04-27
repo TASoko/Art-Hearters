@@ -174,7 +174,7 @@ const projectSeed = [
 //         process.exit(1);
 //     });
 
-// // empty the events schema then add the seeds
+// empty the events schema then add the seeds
 // db.Event.deleteMany({})
 //   .then(() => db.Event.collection.insertMany(eventSeed))
 //   .then(data => {

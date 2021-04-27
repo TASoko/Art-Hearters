@@ -24,10 +24,7 @@ function Event() {
 	};
 
 	const uploadImage = (e) => {
-		// e.preventDefault();
 		console.log("hit uploadImage")
-
-
 		const files = document.querySelector("#upload-image").files;
 		console.log("First file, which will be uploaded: " + files[0])
 		const formData = new FormData()
@@ -41,8 +38,6 @@ function Event() {
 			method: "POST",
 			body: formData
 		  })
-		  debugger
-		//   console.log(fetchedInfo, " the fetchedInfo");
 		  return getURLofImage(filename)
 	  }}
 
@@ -52,8 +47,6 @@ function Event() {
 		const getURL = `https://wjr-bucket-1.s3.us-east-2.amazonaws.com/${filename}`;
 		console.log("getURL: " + getURL)
 		return getURL
-		// setImageURL(getURL)
-		// console.log("state's getURL  = " + imageURL)
 		}
 
 
@@ -68,13 +61,9 @@ function Event() {
 
 		const url = await uploadImage(); // <-- uploads the image and saves the getURL as imageURL from getURLofImage fxn
 		console.log('image url', url)
-		// console.log("from handle submit " + imageURL)
 		state.aws_image_url = url
 		console.log("from state.aws_image_url " + state.aws_image_url)
 
-		// console.log("ran uploadImage, now about to try the rest of the submit...")
-		// const aws_image_url = imageURL
-		// console.log(aws_image_url + "from state the image url <--")
 
 		try {
 			const { title, location, description, to, from, aws_image_url } = state;
@@ -428,6 +417,15 @@ function Event() {
 					Create New Event
 				</button>
 			)}
+
+<button
+					type='button'
+					className='goBack login py-2 px-4 mb-10  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2'
+					onClick={() => window.history.back()}
+				>
+					Go Back
+				</button>
+
 
 			<h1>All Events</h1>
 			<hr />
