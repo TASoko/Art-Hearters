@@ -206,9 +206,10 @@ function Event() {
                             <div className="flex-shrink">
                               <a className="block relative">
                                 <img
+								  style={{width:"200px", height:"200px", maxWidth:"none"}}
                                   alt="uploaded from user"
                                   src={aws_image_url}
-                                  className="mx-auto object-cover rounded-full h-10 w-10 "
+                                  className="mx-auto object-cover rounded-full "
                                 />
                               </a>
                             </div>
