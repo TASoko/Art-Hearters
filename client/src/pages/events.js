@@ -12,6 +12,7 @@ function Event() {
 	const [showForm, setShowForm] = React.useState(false);
 	const [isUpdateEvent, setIsUpdateEvent] = React.useState(false);
 	const [state, setState] = React.useState({});
+	const [imageURL, setImageURL] = React.useState("")
 
 
 	const getAllEvents = async () => {
@@ -23,53 +24,39 @@ function Event() {
 		}
 	};
 
-	const uploadImage = e => {
+	const uploadImage = (e) => {
 		// e.preventDefault();
-		console.log("hit get image")
+		console.log("hit uploadImage")
+
+
 		const files = document.querySelector("#upload-image").files;
-		console.log("Files Uploaded: " + files)
 		console.log("First file, which will be uploaded: " + files[0])
 		const formData = new FormData()
 		formData.append("image", files[0])
-		console.log("form data = " + formData)
 		const filename = files[0].name
+
+
 		if (files && files.length > 0) {
-		  // const file = files[0];
-		  // this.setState({ file });
-		  console.log("got the image")
-		  console.log(formData.get("image"))
 		  console.log('about to fetch...')
 		  fetch("/api/assets/upload", {
 			method: "POST",
 			body: formData
 		  })
-		  console.log("after post fetch");
-		  getURLofImage(filename)
+		  debugger
+		//   console.log(fetchedInfo, " the fetchedInfo");
+		  return getURLofImage(filename)
 	  }}
 
 	  const getURLofImage = file => {
-		console.log("filename form getURL " + file)
+		console.log("filename from getURLofImage " + file)
 		const filename = file
 		const getURL = `https://wjr-bucket-1.s3.us-east-2.amazonaws.com/${filename}`;
-		console.log(getURL)
+		console.log("getURL: " + getURL)
+		return getURL
+		// setImageURL(getURL)
+		// console.log("state's getURL  = " + imageURL)
 		}
-	// 	const options = {
-	// 	  params: {
-	// 		Key: filename,
-	// 		ContentType: 'image/jpeg'
-	// 	  }
-	// 	};
-	// 	axios.get(generateGetUrl, options).then(res => {
-	// 	  const { data: getURL } = res;
-	// 	  this.setState({ getURL });
-	// 	});
-	//   };
 
-	//   const bigSubmit = e => {
-	// 	e.preventDefault()
-	// 	uploadImage()
-		// getURLofImage()
-	// }
 
 	React.useEffect(() => {
 		getAllEvents();
@@ -77,17 +64,28 @@ function Event() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		// doing image stuff first before setting the new object
+
+		const url = await uploadImage(); // <-- uploads the image and saves the getURL as imageURL from getURLofImage fxn
+		console.log('image url', url)
+		// console.log("from handle submit " + imageURL)
+		state.aws_image_url = url
+		console.log("from state.aws_image_url " + state.aws_image_url)
+
+		// console.log("ran uploadImage, now about to try the rest of the submit...")
+		// const aws_image_url = imageURL
+		// console.log(aws_image_url + "from state the image url <--")
+
 		try {
 			const { title, location, description, to, from, aws_image_url } = state;
+			console.log(aws_image_url + " from inside the try")
 
 			// Validate the inputs
 
 			if (!title || !location || !description || !to || !from) {
 				return alert("Fill up the empty field!");
 			}
-
-			// JACK'S ADDITIONS HERE FOR IMAGE
-			uploadImage()
 
 			const data = { ...state };
 
@@ -314,7 +312,9 @@ function Event() {
 							</h2>
 							<div className='max-w-sm mx-auto space-y-5 md:w-2/3'>
 								<div className=' relative '>
-									<Uploader value={state.aws_image_url} />
+									<Uploader 
+										value={state.aws_image_url} 
+									/>
 								</div>
 							</div>
 						</div>
