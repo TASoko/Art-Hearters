@@ -46,6 +46,9 @@ app.use('/api/jobs', require('./routes/api/jobs'));
 app.use('/api/projects', require('./routes/api/projects'));
 app.use('/api/events', require('./routes/api/events'));
 app.use('/api/assets', require('./routes/api/amazon-s3-routes'))
+app.use(function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 // Start the server
 app.listen(PORT, () => console.log(`Server started at ${PORT}`));
