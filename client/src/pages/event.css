@@ -3,3 +3,21 @@
        background: linear-gradient(90deg, #FFFFFF 60%, #D1E9EE 40%);
 
 } */
+.goBack {
+    margin-top: 15px;
+    float: left;
+    background-color: cadetblue;
+}
+
+.create {
+    margin-top: 15px;
+    margin-left: 15px;
+    float: right;
+    background-color: cadetblue;
+
+}
+
+h1 {
+    margin-left: 40px;
+    margin-top: 20px
+}
