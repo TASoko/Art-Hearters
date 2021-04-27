@@ -84,16 +84,12 @@ function Explore ({ history }) {
               <ProjectCard data={project} />
             </div>
           ))}
-      </div>
-      <div className="flex flex-wrap -m-4 cardcontainer">
         {data.jobs &&
           data.jobs.map((job, i) => (
             <div key={i} className="lg:w-1/3 sm:w-1/2 p-4">
               <JobCard data={job} />
             </div>
           ))}
-      </div>
-      <div className="flex flex-wrap -m-4 cardcontainer">
         {data.events &&
           data.events.map((event, i) => (
             <div key={i} className="lg:w-1/3 sm:w-1/2 p-4">
