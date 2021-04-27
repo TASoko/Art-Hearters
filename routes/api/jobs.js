@@ -17,7 +17,7 @@ router.post("/", auth, async (req, res) => {
 	}
 
 	try {
-		const { job, team, location, description,  position, from, to } = req.body;
+		const { job, team, location, description,  position, from, to, aws_image_url } = req.body;
 
 		const newJob = await Job.create({
 			user: req.user.id,
@@ -28,6 +28,7 @@ router.post("/", auth, async (req, res) => {
             team,
 			from,
 			to,
+			aws_image_url
 		});
 
 		res.status(200).json({
