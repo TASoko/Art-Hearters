@@ -2,9 +2,10 @@ import React from "react";
 import "./home.css";
 import Design from "../components/Design/desgin";
 import Navbar from "../components/Navbar/navbar"
+import { withRouter } from "react-router-dom";
 
 
-function Home () {
+function Home ({ history }) {
     return (
       <div>
         <Navbar />
@@ -30,6 +31,7 @@ function Home () {
                 <button
                   type="button"
                   className="explore py-4 px-6  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                  onClick={() => history.push("/explore")}
                 >
                   Explore
                 </button>
@@ -43,4 +45,4 @@ function Home () {
     );
 };
 
-export default Home;
+export default withRouter(Home);
