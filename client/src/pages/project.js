@@ -19,15 +19,54 @@ function Project() {
 		}
 	};
 
+	const uploadImage = (e) => {
+		// e.preventDefault();
+		console.log("hit uploadImage")
+
+
+		const files = document.querySelector("#upload-image").files;
+		console.log("First file, which will be uploaded: " + files[0])
+		const formData = new FormData()
+		formData.append("image", files[0])
+		const filename = files[0].name
+
+
+		if (files && files.length > 0) {
+		  console.log('about to fetch...')
+		  fetch("/api/assets/upload", {
+			method: "POST",
+			body: formData
+		  })
+		//   console.log(fetchedInfo, " the fetchedInfo");
+		  return getURLofImage(filename)
+	  }}
+
+	  const getURLofImage = file => {
+		console.log("filename from getURLofImage " + file)
+		const filename = file
+		const getURL = `https://wjr-bucket-1.s3.us-east-2.amazonaws.com/${filename}`;
+		console.log("getURL: " + getURL)
+		return getURL
+		}
+
+
 	React.useEffect(() => {
 		getAllProjects();
 	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		try {
-			const { projectName, location, description, to, from } = state;
 
+		// doing image stuff first before setting the new object
+
+		const url = await uploadImage(); // <-- uploads the image and saves the getURL as imageURL from getURLofImage fxn
+		console.log('image url', url)
+		state.aws_image_url = url
+		console.log("from state.aws_image_url " + state.aws_image_url)
+
+		try {
+			const { projectName, location, description, to, from, aws_image_url } = state;
+			console.log(aws_image_url + " from inside the try")
 			// Validate the inputs
 
 			console.log(projectName, location, description, to, from);
@@ -145,18 +184,19 @@ function Project() {
                   </tr>
                 </thead>
                 {projects.map((el) => {
-                  const { _id, project, location, description, to, from } = el;
+                  const { _id, project, location, description, to, from, aws_image_url } = el;
                   return (
                     <tbody>
                       <tr key={_id}>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
                             <div className="flex-shrink">
-                              <a href="#" className="block relative">
+                              <a className="block relative">
                                 <img
-                                  alt="position image"
-                                  src={"../images/chalk-rocks.jpeg"}
-                                  className="mx-auto object-cover rounded-full h-10 w-10 "
+								  style={{width:"200px", height:"200px", maxWidth:"none"}}
+                                  alt="uploaded from user"
+                                  src={aws_image_url}
+                                  className="mx-auto object-cover rounded-full "
                                 />
                               </a>
                             </div>
@@ -327,17 +367,19 @@ function Project() {
 							</div>
 						</div>
 						<hr />
-						{/* <div className="items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
-              <h2 className="max-w-sm mx-auto md:w-4/12">
-                Upload an Image to be Displayed
-              </h2>
-              <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
-                <div className=" relative ">
-                  <Uploader />
-                </div>
-              </div>
-            </div>
-            <hr /> */}
+						<div className='items-center w-full p-8 space-y-4 text-gray-500 md:inline-flex md:space-y-0'>
+							<h2 className='max-w-sm mx-auto md:w-4/12'>
+								Upload an Image to be Displayed
+							</h2>
+							<div className='max-w-sm mx-auto space-y-5 md:w-2/3'>
+								<div className=' relative '>
+									<Uploader 
+										value={state.aws_image_url} 
+									/>
+								</div>
+							</div>
+						</div>
+            <hr />
 						<div className='w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3'>
 							<button
 								type='submit'

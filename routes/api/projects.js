@@ -18,7 +18,7 @@ router.post("/", auth, async (req, res) => {
 	}
 
 	try {
-		const { project, location, description, from, to } = req.body;
+		const { project, location, description, from, to, aws_image_url } = req.body;
 
 		const newProject = await Project.create({
 			user: req.user.id,
@@ -27,6 +27,7 @@ router.post("/", auth, async (req, res) => {
 			description,
 			from,
 			to,
+			aws_image_url
 		});
 
 		res.status(200).json({
