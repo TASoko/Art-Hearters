@@ -1,20 +1,15 @@
-.modal {
-border-style: solid;
-  border-width: 10px;
-  border-color: #EED3D1;
 
-}
-.jobs {
+.jobmodal {
   border-style: solid;
   border-width: 10px;
   border-color: #EED3D1;
 }
-.events {
+.eventmodal {
   border-style: solid;
   border-width: 10px;
   border-color: #D1E9EE;;
 }
-.projects {
+.projectmodal {
   border-style: solid;
   border-width: 10px;
   border-color: #EDD1EE;

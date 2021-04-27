@@ -1,20 +1,21 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import "./style.css";
 
-function CreateNavbar() {
+function CreateNavbar({ history }) {
   return (
     <div>
       <nav className="bg-white dark:bg-gray-800  shadow ">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex items-center justify-between h-16">
             <div className="w-full justify-between flex items-center">
-              {/* <a className="flex-shrink-0" href="/"></a>     commented out bc of warnings error */}
+              <a className="flex-shrink-0" href="/"></a>  
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <button
                     type="button"
-                    className="signup py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
-                    href="/login"
+                    className="login py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text- w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                    onClick={() => history.push("/")}
                   >
                     Logout
                   </button>
@@ -45,4 +46,4 @@ function CreateNavbar() {
   );
 }
 
-export default CreateNavbar;
+export default withRouter(CreateNavbar);
