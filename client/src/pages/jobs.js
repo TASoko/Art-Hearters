@@ -20,27 +20,38 @@ function Job() {
 		}
 	};
 
-  const getImage = e => {
-    e.preventDefault();
-    console.log("getting the image")
-  //   const files = document.querySelector("#upload-image").files;
-  //   console.log("Files Uploaded: " + files)
-  //   console.log("First file, which will be uploaded: " + files[0])
-  //   const formData = new FormData()
-  //   formData.append("image", files[0])
-  //   // const filename = files[0].name
-  //   if (files && files.length > 0) {
-  //     // const file = files[0];
-  //     // this.setState({ file });
-  //     console.log("got the image")
-  //     console.log(formData.get("image"))
-  //     console.log('about to fetch...')
-  //     fetch("/api/assets/upload", {
-  //       method: "POST",
-  //       body: formData
-  //     })
-  //   }
-  };
+  const uploadImage = (e) => {
+		// e.preventDefault();
+		console.log("hit uploadImage")
+
+
+		const files = document.querySelector("#upload-image").files;
+		console.log("First file, which will be uploaded: " + files[0])
+		const formData = new FormData()
+		formData.append("image", files[0])
+		const filename = files[0].name
+
+
+		if (files && files.length > 0) {
+		  console.log('about to fetch...')
+		  fetch("/api/assets/upload", {
+			method: "POST",
+			body: formData
+		  })
+		  debugger
+		//   console.log(fetchedInfo, " the fetchedInfo");
+		  return getURLofImage(filename)
+	  }}
+
+	  const getURLofImage = file => {
+		console.log("filename from getURLofImage " + file)
+		const filename = file
+		const getURL = `https://wjr-bucket-1.s3.us-east-2.amazonaws.com/${filename}`;
+		console.log("getURL: " + getURL)
+		return getURL
+		// setImageURL(getURL)
+		// console.log("state's getURL  = " + imageURL)
+		}
 
   
 
@@ -51,10 +62,21 @@ function Job() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-    
+    // doing image stuff first before setting the new object
+
+		const url = await uploadImage(); // <-- uploads the image and saves the getURL as imageURL from getURLofImage fxn
+		console.log('image url', url)
+		// console.log("from handle submit " + imageURL)
+		state.aws_image_url = url
+		console.log("from state.aws_image_url " + state.aws_image_url)
+
+		// console.log("ran uploadImage, now about to try the rest of the submit...")
+		// const aws_image_url = imageURL
+		// console.log(aws_image_url + "from state the image url <--")
 
 		try {
-			const {  team, location, description, position, to, from } = state;
+			const {  team, location, description, position, to, from, aws_image_url } = state;
+      console.log(aws_image_url + " from inside the try")
 
 			// Validate the inputs
 			
@@ -187,6 +209,7 @@ function Job() {
                         description,
                         to,
                         from,
+                        aws_image_url
                       } = el;
                       return (
                         <tbody>
@@ -194,12 +217,13 @@ function Job() {
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <div className="flex items-center">
                                 <div className="flex-shrink">
-                                  <a href="#" className="block relative">
+                                  <a className="block relative">
                                     <img
-                                      alt="position image"
-                                      src={"../images/chalk-rocks.jpeg"}
-                                      className="mx-auto object-cover rounded-full h-10 w-10 "
-                                    />
+								                  style={{width:"200px", height:"200px", maxWidth:"none"}}
+                                  alt="uploaded from user"
+                                  src={aws_image_url}
+                                  className="mx-auto object-cover rounded-full "
+                                />
                                   </a>
                                 </div>
                                 <div className="ml-3">
@@ -394,14 +418,14 @@ function Job() {
               </h2>
               <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
                 <div className=" relative ">
-                  <Uploader />
+                  <Uploader 
+                  value={state.aws_iamge_url}/>
                 </div>
               </div>
             </div>
             <hr />
             <div className="w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3">
               <button 
-                onClick={getImage}
                 type="submit"
                 className="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                     
