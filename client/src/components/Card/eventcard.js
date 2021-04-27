@@ -24,7 +24,7 @@ function EventCard({ data }) {
             {data?.title}
           </h1>
           <p className="leading-relaxed">
-            {data?.description}
+            {data?.description.substr(0, 120)} ...
           </p>
         </div>
       </div>
