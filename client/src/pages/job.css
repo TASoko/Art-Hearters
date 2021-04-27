@@ -3,7 +3,22 @@
 
 } */
 
-.login {
-    margin-top: 5px;
-    margin-left: 10px;
+.goBack {
+    margin-top: 15px;
+    float: left;
+    background-color: cadetblue;
 }
+
+.create {
+    margin-top: 15px;
+    margin-left: 15px;
+    float: right;
+    background-color: cadetblue;
+
+}
+
+h1 {
+    margin-left: 40px;
+    margin-top: 20px
+}
+
