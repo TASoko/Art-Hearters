@@ -15,7 +15,7 @@ router.post("/", auth, async (req, res) => {
 	}
 
 	try {
-		const { event, title, location, description, from, to } = req.body;
+		const { event, title, location, description, from, to, aws_image_url} = req.body;
 
 		const newEvent = await Event.create({
 			user: req.user.id,
@@ -25,6 +25,7 @@ router.post("/", auth, async (req, res) => {
 			description,
 			from,
 			to,
+			aws_image_url
 		});
 
 		res.status(200).json({

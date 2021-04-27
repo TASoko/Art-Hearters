@@ -41,7 +41,6 @@ function Event() {
 			method: "POST",
 			body: formData
 		  })
-		  debugger
 		//   console.log(fetchedInfo, " the fetchedInfo");
 		  return getURLofImage(filename)
 	  }}

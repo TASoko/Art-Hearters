@@ -38,7 +38,6 @@ function Job() {
 			method: "POST",
 			body: formData
 		  })
-		  debugger
 		//   console.log(fetchedInfo, " the fetchedInfo");
 		  return getURLofImage(filename)
 	  }}
@@ -93,6 +92,8 @@ function Job() {
 			const url = isUpdateJob
 				? `/api/jobs/${state._id}`
 				: "/api/jobs";
+
+        console.log(data)
 
 			const res = await axios({
 				method,
@@ -467,7 +468,7 @@ function Job() {
         
 			)}
 
-			<h1>AllJobs</h1>
+			<h1>All Jobs</h1>
 			<hr />
 
 			{showForm ? displayJobForm() : displayJobs()}
